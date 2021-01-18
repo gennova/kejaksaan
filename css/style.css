@@ -3237,10 +3237,10 @@ div#stacked-graph .label {
 }
 @media (max-width: 991px){
 	.agileits_logo h1 a {
-		background: url(../images/loggo3.png) no-repeat 0px 0px;
-		background-size: 11%;
+		background: url(../images/1.jpg) no-repeat 0px 0px;
+		background-size: 20%;
 		height: 55px;
-		padding-left: 2em;
+		padding-left: 1.3em;
 		padding-top: 0;
 	}
 	.agileits_search {
@@ -3679,7 +3679,7 @@ div#stacked-graph .label {
 }
 @media (max-width: 480px){
 	.agileits_logo {
-		width: 100%;
+		width: 55%;
 	}
 	.w3l_header_left {
 		float: none;

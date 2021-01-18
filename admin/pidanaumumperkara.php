@@ -173,7 +173,7 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
                       <div class="col-md-2">
                         <div class="form-group">
                           <label class="bmd-label-floating">No. Pengaduan</label>
-                          <input type="text" id="noaduan" onkeypress="cek()" class="form-control" name="noaduan" required>
+                          <input type="text" id="noaduan" onKeyPress="cek()" class="form-control" name="noaduan" required>
                         </div>
                       </div>
                       <div class="col-md-3">
@@ -234,17 +234,21 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
                         <div class="form-group">
                           <label class="bmd-label-floating">Status Tahapan</label>
                           <select name="tahapan" class="form-control">
-                            <option>SPDB (Surat Pemberitahuan Dimulai Penyidikan)</option>
-                            <option>Tahap 1 (Pengiriman Berkas Perkara)</option>
-                            <option>Tahap 2 Penyerahan Tersangka dan Barang Bukti</option>
-                            <option>P21 Pelimpahan Berkas Perkara</option>
-                            <option>SIDANG</option>
+                            <option>SPDP (Surat Pemberitahuan Dimulai Penyidikan)</option>
+                            <option>Tahap 1 </option>
+							<option>P-21 (Berkas Tahap 1 Sudah Lengkap)</option>
+                            <option>Tahap 2</option>
+							<option>P-33 (Pelimpahan Perkara Ke Pengadilan)</option>
+							<option>Persidangan (Pembacaan Dakwaan)</option>
+							<option>Persidangan (Pembuktian / Pemeriksaan Saksi-Saksi)</option>
+                            <option>Persidangan (Pembacaan Tuntutan)</option>
+							<option>Persidangan (Pembacaan Putusan)</option>
                             <option>Eksekusi</option>
                           </select>
                         </div>
                       </div>
                     </div>
-                    <button type="button" class="btn btn-primary pull-right" onclick="submit()">SIMPAN</button>
+                    <button type="button" class="btn btn-primary pull-right" onClick="submit()">SIMPAN</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>
@@ -255,36 +259,13 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
       </div>
       <footer class="footer">
         <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="#">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Licenses
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <nav class="float-left"></nav>
           <div class="copyright float-right">
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by Devi Landak Software House
-          </div>
+            </script>
+            , DV LandakSoftwareHouse          </div>
         </div>
       </footer>
     </div>

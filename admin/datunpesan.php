@@ -195,8 +195,8 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by Devi Landak Software House
-          </div>
+            </script>
+            , DV LandakSoftwareHouse          </div>
         </div>
       </footer>
     </div>

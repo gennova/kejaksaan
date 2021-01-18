@@ -114,66 +114,19 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
       <div class="content" style="margin-top: 10px">
       <div class="card">
   <div class="card-body">
-    <h5 class="card-title">Data Pidana Umum</h5>
-    <div class="row justify-content-center">
-      <div class="card text-white bg-primary mb-3 mr-4" style="max-width: 18rem;">
-        <div class="card-header">Data Aduan</div>
-        <div class="card-body">
-          <h5 class="card-title">Jumlah aduan</h5>
-          <p class="card-text" id="aduan">.........</p>
-        </div>
-     </div>
-     <div class="card text-white bg-info mb-3 mr-4" style="max-width: 18rem;">
-  <div class="card-header">Data Perkara</div>
-  <div class="card-body">
-    <h5 class="card-title">Jumlah Perkara</h5>
-    <p class="card-text" id="perkara">.........</p>
-  </div>
-</div>
-<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-  <div class="card-header">Data Tilang</div>
-  <div class="card-body">
-    <h5 class="card-title">Jumlah Kasus Tilang</h5>
-    <p class="card-text" id="tilang">.........</p>
-  </div>
-</div>
-   </div>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
+    <h5 class="card-title"><img src="../images/0e0a3bba96bb7e9f7df7866b7d4f8286.jpg" width="766" height="580"></h5>
+    </div>
 </div>
       </div>
       <footer class="footer">
         <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="#">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Licenses
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="copyright float-right">
+          <nav class="float-left"></nav>
+           <div class="copyright float-right">
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by Devi Landak Software House
-          </div>
+            </script>
+            , DV LandakSoftwareHouse          </div>
         </div>
       </footer>
     </div>

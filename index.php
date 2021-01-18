@@ -72,6 +72,11 @@ $result_running = mysqli_query($con,$sql_query_running);
 	});
 </script>
 <!-- start-smoth-scrolling -->
+<style type="text/css">
+<!--
+.style1 {color: #FFFFFF}
+-->
+</style>
 </head>
 	
 <body>
@@ -91,24 +96,19 @@ $result_running = mysqli_query($con,$sql_query_running);
 						<li class="w3layouts_header_list">
 							<a href="admin">Login Admin</a><i>|</i>
 						</li>
-						<li class="w3layouts_header_list">
-							<a href="about.html">FAQ</a><i>|</i>
-						</li>
-						<li class="w3layouts_header_list">
-							<a href="about.html">Kontak Kami</a>
-						</li>
+						
 					</ul>
 				</div>
 				<div class="w3l_header_right">
-					<h2><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+(62) 123 456 678</h2>
+					
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
 		<div class="w3ls_header_middle">
-			<div class="container-fluid">
+			<div class="container">
 				<div class="agileits_logo">
-					<h1><a href="index.php"><span style="font-size:2.5vw;">&nbspKEJAKSAAN NEGERI</span> <span style="color: black;font-size:2.5vw;">KABUPATEN LANDAK</span><i style="padding-top: 0px;display: inline;">&nbsp&nbsp  <p style="font-size:1vw;;padding-left: 10px"><b>Sistem Informasi Digitalisasi Akuntable Yuridis Aktual Komunikatif</b></p></i></a></h1>
+					<h1><a href="index.php"><span>&nbspKEJAKSAAN NEGERI</span> KABUPATEN LANDAK<i style="padding-top: 0px;display: inline;">&nbsp&nbsp  <p style="font-size: 14px;padding-left: 10px"><b>Sistem Informasi Digitalisasi Akuntable Yuridis Aktual Komunikatif</b></p></i></a></h1>
 				</div>
 
 				<div class="clearfix"> </div>
@@ -140,8 +140,8 @@ $result_running = mysqli_query($con,$sql_query_running);
 									<ul>	
 										<li><a href="visi.php">Visi dan Misi</a></li>
 										<li><a href="tugas.php">Tugas dan Wewenang</a></li>
-										<li><a href="struktur.php">Struktur Organisasi</a></li>
-										<li><a href="profil.php">Profil Pimpinan</a></li>
+										
+										<li><a href="profil.php">Pimpinan</a></li>
 										<li><a href="sejarah.php">Sejarah</a></li>
 									</ul>             
 								</div>
@@ -165,16 +165,13 @@ $result_running = mysqli_query($con,$sql_query_running);
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Info Perkara<span class="caret"></span></a>
 								<div class="dropdown-menu w3ls_vegetables_menu">
 									<ul>	
-										<li><a href="#">Pidana Umum</a></li>
-										<li><a href="#">Pidana Khusus</a></li>
+										
 										<li><a href="infotilang.php">Data Tilang</a></li>
 									</ul>             
 								</div>
 							</li>
 							<li><a href="loginuser.html">Pengaduan Masyarakat</a></li>
-							<li><a href="#">Pelayanan Umum</a></li>
-							<li><a href="#">Reformasi Birokrasi</a></li>
-							<li><a href="#">Informasi Publik</a></li>
+							
 						</ul>
 					</nav>
 				</div>
@@ -189,42 +186,29 @@ $result_running = mysqli_query($con,$sql_query_running);
 					<ul class="slides">
 						<li>
 							<div class="w3_agile_banner_text banner1">
-								<h3>Hari Bakti Adyhyaksa ke 60</h3>
+								<h3></h3>
 								<div class="more">
-									<a href="single.html" class="button button--isi button--text-thick button--text-upper button--size-s"><span>Lihat berita</span></a>
+									
 								</div>
 							</div>
 						</li>
 						<li>
 							<div class="w3_agile_banner_text banner2">
-								<h3>Hari Bakti Adyhyaksa ke 60</h3>
+								<h3></h3>
 								<div class="more">
-									<a href="single.html" class="button button--isi button--text-thick button--text-upper button--size-s"><span>Lihat berita</span></a>
+									
 								</div>
 							</div>
 						</li>
 						<li>
 							<div class="w3_agile_banner_text banner3">
-								<h3>Hari Bakti Adyhyaksa ke 60</h3>
+								<h3></h3>
 								<div class="more">
-									<a href="single.html" class="button button--isi button--text-thick button--text-upper button--size-s"><span>Lihat berita</span></a>
+									
 								</div>
 							</div>
 						</li>
-						<li>
-							<div class="w3_agile_banner_text banner4">
-								<h3>Hari Bakti Adyhyaksa ke 60</h3>
-								<div class="more">
-									<a href="single.html" class="button button--isi button--text-thick button--text-upper button--size-s"><span>Lihat berita</span></a>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="w3_agile_banner_text banner5">
-								<h4>Cluster baru penyebaran corona</h4>
-							</div>
-						</li>
-					</ul>
+				  </ul>
 				</div>
 			</section>
 			<!-- flexSlider -->
@@ -291,7 +275,7 @@ $result_running = mysqli_query($con,$sql_query_running);
 							<input type="email" id="emailtxt" placeholder="Email" >
 							<input type="email" id="phonetxt" placeholder="Telpon" >
 							<input type="email" id="masalahtxt" placeholder="Permasalahan" >
-							<input type="button" onclick="sweet()" value="Submit" style="width: 335px">
+							<input type="button" onClick="sweet()" value="Submit" style="width: 335px">
 						</form>
 					</div>
 					<p align="center">
@@ -447,29 +431,27 @@ $result_running = mysqli_query($con,$sql_query_running);
                         ?>
                       </tbody>
                     </table>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>				
+							  </div>
+						  </div>
+					  </div>
+				  </div>
+			  </div>
+		  </div>				
 				<div class="col-md-3 agileinfo_news_original_grids_right">
 					<div class="w3_stocks">
 						<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 							<ul id="myTab2" class="nav nav-tabs nav-tabs1" role="tablist">
-								<li role="presentation" class="active"><a href="#home2" id="home2-tab" role="tab" data-toggle="tab" aria-controls="home2" aria-expanded="true">Pengumuman</a></li>
+								<li role="presentation" class="active">
 							</ul>
 							<div id="myTabContent2" class="tab-content">
 								<div role="tabpanel" class="tab-pane fade in active" id="home2" aria-labelledby="home2-tab">
-									<div class="w3l_stocks">
+									
 										<div class="w3l_stocks1">
-											<a href="single.html"><h4>Sidang Tilang</h4></a>
-											<p>PENGUMUMAN PERTAMA SIDANG E-TILANG Desember 2020</p>
+											
 										</div>
 										<div class="w3l_stocks1">
-											<a href="single.html"><h4>Lelang Barang</h4></a>
-											<p>PENGUMUMAN KEDUA LELANG BARANG RAMPASAN An. Terpidana Nusa Abadi</p>
-										</div>
+											
+									
 										
 									</div>
 								</div>
@@ -518,21 +500,20 @@ $result_running = mysqli_query($con,$sql_query_running);
 					</div>
 				</div>
 				<div class="clearfix"> </div>
-			</div>
-		</div>
+	  </div>
+</div>
 	</div>
 <!-- //news-original -->
 <!-- follow-us -->
 <!-- //follow-us -->
 <!-- footer -->
 	<div class="footer">
-		<div class="container">
-			<ul class="agileits_w3layouts_footer_info">
-				<li><a href="index.php">Beranda</a><i>|</i></li>
-				<li><a href="#">Produk Hukum</a><i>|</i></li>
-			</ul>
-			<p><a href="#">Powered by Devi Landak Software House</a></p>
-		</div>
+		<div class="copyright float-right style1">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear())
+            </script>, DV LandakSoftwareHouse         </div>
+</div>
 	</div>
 <!-- //footer -->
 <!-- script for marque -->

@@ -11,7 +11,7 @@ if ($pengirim != ""&&$pesan!=''&& $tujuan!=''){
     $sql_query = "insert into pesan(pengirim,pesan,remark) values ('".$pengirim."','".$pesan."','".$tujuan."');";
     if (mysqli_query($con, $sql_query)) {
     echo "Record insertted successfully";
-    header("Location: homeuser.php");
+    header("Location: userinbox.php");
     } else {
      echo "Error updating record: " . mysqli_error($conn);
    }

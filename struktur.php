@@ -58,6 +58,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	});
 </script>
+<link rel="icon" type="image/png" href="./images/loggo2_YfP_2.ico"/>
+
 <!-- start-smoth-scrolling -->
 </head>
 	
@@ -266,19 +268,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="w3_stocks">
 						<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 							<ul id="myTab2" class="nav nav-tabs nav-tabs1" role="tablist">
-								<li role="presentation" class="active"><a href="#home2" id="home2-tab" role="tab" data-toggle="tab" aria-controls="home2" aria-expanded="true">Pengumuman</a></li>
+								<li role="presentation" class="active">
 							</ul>
 							<div id="myTabContent2" class="tab-content">
 								<div role="tabpanel" class="tab-pane fade in active" id="home2" aria-labelledby="home2-tab">
-									<div class="w3l_stocks">
+									
 										<div class="w3l_stocks1">
-											<a href="single.html"><h4>Sidang Tilang</h4></a>
-											<p>PENGUMUMAN PERTAMA SIDANG E-TILANG Desember 2020</p>
+											
 										</div>
 										<div class="w3l_stocks1">
-											<a href="single.html"><h4>Lelang Barang</h4></a>
-											<p>PENGUMUMAN KEDUA LELANG BARANG RAMPASAN An. Terpidana Nusa Abadi</p>
-										</div>
+											
+									
 										
 									</div>
 								</div>

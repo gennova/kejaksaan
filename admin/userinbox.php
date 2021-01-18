@@ -39,7 +39,7 @@ $result = mysqli_query($con,$sql_query);
 </head>
 
 <body class="">
-  <div class="wrapper ">
+<div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
@@ -47,7 +47,7 @@ $result = mysqli_query($con,$sql_query);
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo"><a href="homeuser.php" class="simple-text logo-normal">
-          Dashboard Admin
+          Dashboard User
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -234,38 +234,15 @@ $result = mysqli_query($con,$sql_query);
       </div>
       <footer class="footer">
         <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="#">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Licenses
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <nav class="float-left"></nav>
           <div class="copyright float-right">
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by Devi Landak Software House
-          </div>
+            </script>
+            , DV LandakSoftwareHouse </div>
         </div>
-      </footer>
+  </div>
     </div>
   </div>
   <!--   Core JS Files   -->

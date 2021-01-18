@@ -43,7 +43,7 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
 </head>
 
 <body class="">
-  <div class="wrapper ">
+<div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
@@ -207,11 +207,12 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
                           <select name="tujuan" class="form-control select2">
                             <option value="pembinaan">Pembinaan</option>
                             <option value="intelijen">Intelijen</option>
-                              <option value="pidanaumum">Pidana Umum</option>
-                              <option value="pidanakhusus">Pidanan Khusus</option>
-                              <option value="barangbukti">Barang Bukti</option>
-                              <option value="barangrampasan">Barang Rampasan</option>
-                            </select>
+                            <option value="pidanaumum">Pidana Umum</option>
+                            <option value="pidanakhusus">Pidanan Khusus</option>
+                            <option value="datun">Perdata Tata Usaha Negara</option>
+                            <option value="barangbukti">Barang Bukti dan Barang Rampasan</option>
+                            
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -226,38 +227,15 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
       </div>
       <footer class="footer">
         <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="#">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Licenses
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <nav class="float-left"></nav>
           <div class="copyright float-right">
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by Devi Landak Software House
-          </div>
+            </script>
+            , DV LandakSoftwareHouse </div>
         </div>
-      </footer>
+  </div>
     </div>
   </div>
   <!--   Core JS Files   -->

@@ -43,7 +43,7 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
 </head>
 
 <body class="">
-  <div class="wrapper ">
+<div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
@@ -51,7 +51,7 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo"><a href="homeuser.php" class="simple-text logo-normal">
-          Dashboard Admin
+          Dashboard User
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -94,8 +94,7 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">HALAMAN ADMIN PIDANA UMUM KIRIM PESAN</a>
-          </div>
+            <a href="javascript:;" class="navbar-brand"><strong>Sistem Informasi Digitalisasi Akuntable Yuridis Aktual Komunikatif</strong></a>          </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
@@ -155,9 +154,10 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
                               <option value="pembinaan">Pembinaan</option>
                               <option value="intelijen">Intelijen</option>
                               <option value="pidanaumum">Pidana Umum</option>
-                              <option value="pidanakhusus">Pidanan Khusus</option>
+                              <option value="pidanakhusus">Pidana Khusus</option>
+							   <option value="datun">Perdata Tata Usaha Negara</option>
                               <option value="barangbukti">Barang Bukti</option>
-                              <option value="datun">Perdata dan Tata Usaha Negara</option>
+                             
                             </select>
                           </div>
                           <label>Isi Pesan</label>
@@ -179,38 +179,15 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
       </div>
       <footer class="footer">
         <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="#">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Licenses
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <nav class="float-left"></nav>
           <div class="copyright float-right">
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by Devi Landak Software House
-          </div>
+            </script>
+            , DV LandakSoftwareHouse </div>
         </div>
-      </footer>
+  </div>
     </div>
   </div>
   <!--   Core JS Files   -->

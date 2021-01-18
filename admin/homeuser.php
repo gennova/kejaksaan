@@ -94,14 +94,16 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;"><div style="display: block;font-weight: bold;text-shadow: 1px green;">Sistem Informasi Digitalisasi Akuntable Yuridis Aktual Komunikatif</div></a>
+            <a class="navbar-brand" href="javascript:;"><div style="display: block;font-weight: bold;text-shadow: 1px green;">
+              <p>Sistem Informasi Digitalisasi Akuntable Yuridis Aktual Komunikatif</p>
+              <p><img src="../images/welcome.jpg" width="1082" height="538"></p>
+            </div></a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
             <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-          </button>
+            <span class="navbar-toggler-icon icon-bar"></span></button>
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
@@ -135,39 +137,15 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
       </div>
       <footer class="footer">
         <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="#">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Licenses
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <nav class="float-left"></nav>
           <div class="copyright float-right">
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by Kejaksaan Kabupaten Landak
-          </div>
+            </script>
+            , DV LandakSoftwareHouse </div>
         </div>
-      </footer>
-    </div>
+      </footer></div>
   </div>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
