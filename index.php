@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <?php
 include "config.php";
-$sql_query = "select * from berita";
+$sql_query = "SELECT * FROM berita ORDER BY id DESC LIMIT 3";
 $result = mysqli_query($con,$sql_query);
 $sql_query2 = "select * from berita";
 $result2 = mysqli_query($con,$sql_query2);
@@ -80,105 +80,7 @@ $result_running = mysqli_query($con,$sql_query_running);
 </head>
 	
 <body>
-<!-- header -->
-	<div class="header">
-		<div class="w3ls_header_top">
-			<div class="container">
-				<div class="w3l_header_left">
-					<ul class="w3layouts_header">
-						<li class="w3layouts_header_list">
-							<ul>
-								<li>
-									<i>|</i>
-								</li>
-							</ul>
-						</li>
-						<li class="w3layouts_header_list">
-							<a href="admin">Login Admin</a><i>|</i>
-						</li>
-						
-					</ul>
-				</div>
-				<div class="w3l_header_right">
-					
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-		<div class="w3ls_header_middle">
-			<div class="container">
-				<div class="agileits_logo">
-					<h1><a href="index.php"><span>&nbspKEJAKSAAN NEGERI</span> KABUPATEN LANDAK<i style="padding-top: 0px;display: inline;">&nbsp&nbsp  <p style="font-size: 14px;padding-left: 10px"><b>Sistem Informasi Digitalisasi Akuntable Yuridis Aktual Komunikatif</b></p></i></a></h1>
-				</div>
-
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-<!-- //header -->
-<!-- navigation -->
-	<div class="trade_navigation">
-		<div class="container">
-			<nav class="navbar nav_bottom">
-			 <!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header nav_2">
-				  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				  </button>
-				</div> 
-			   <!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-					<nav class="wthree_nav">
-						<ul class="nav navbar-nav nav_1">
-							<li class="act"><a href="index.php">Beranda</a></li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Profil<span class="caret"></span></a>
-								<div class="dropdown-menu w3ls_vegetables_menu">
-									<ul>	
-										<li><a href="visi.php">Visi dan Misi</a></li>
-										<li><a href="tugas.php">Tugas dan Wewenang</a></li>
-										
-										<li><a href="profil.php">Pimpinan</a></li>
-										<li><a href="sejarah.php">Sejarah</a></li>
-									</ul>             
-								</div>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Organisasi<span class="caret"></span></a>
-								<div class="dropdown-menu w3ls_vegetables_menu">
-									<ul>	
-										<li><a href="pembinaan.php">Pembinaan</a></li>
-										<li><a href="intelijen.php">Intelijen</a></li>
-										<li><a href="tp4d.php">TP4D</a></li>
-										<li><a href="pidum.php">Pidana Umum</a></li>
-										<li><a href="pidsus.php">Pidana Khusus</a></li>
-										<li><a href="datun.php">Datun</a></li>
-										<li><a href="pengawasan.php">Pengawasan</a></li>
-										<li><a href="tatausaha.php">Tata Usaha</a></li>
-									</ul>             
-								</div>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Info Perkara<span class="caret"></span></a>
-								<div class="dropdown-menu w3ls_vegetables_menu">
-									<ul>	
-										
-										<li><a href="infotilang.php">Data Tilang</a></li>
-									</ul>             
-								</div>
-							</li>
-							<li><a href="loginuser.html">Pengaduan Masyarakat</a></li>
-							
-						</ul>
-					</nav>
-				</div>
-			</nav>
-		</div>
-	</div>
-<!-- //navigation -->
+<?php include 'headernavinclude.html';?>
 <!-- banner -->
 	<div class="banner">
 			<section class="slider">
@@ -285,11 +187,12 @@ $result_running = mysqli_query($con,$sql_query_running);
 					<div style="padding-bottom: 20px"><h3>BERITA TERBARU</h3></div>
 					<?php
 					while($row = mysqli_fetch_assoc($result)) {
-						echo '<div style="padding-bottom: 100px">';
-						echo '<div class="col-sm-4"><img src="images/'.$row['foto'].'" alt=" " class="img-responsive" /></div>	';
-						echo '<div class="col-sm-8"><h4>'.$row['judul'].'</h4>
-							'.$row['ringkasan'].'</div>					
-					</div>';
+						echo '<div class="row">';
+						echo '<div class="col-sm-4" style="display: flex; justify-content: center;
+  height: 120px"><img src="images/'.$row['foto'].'" alt=" " class="img-responsive" /></div>	';
+						echo '<div class="col-sm-8"><h5><b><a href="lihatberita.php?code='.$row['id'].'">'.$row['judul'].'</a></b></h5>
+							<p>'.$row['ringkasan'].'</div>					
+					</div><br/>';
 					}
 					?>
 						
@@ -302,8 +205,17 @@ $result_running = mysqli_query($con,$sql_query_running);
 						<img src="images/13.jpg" alt=" " class="img-responsive" />
 						
 						<div style="text-align: center"><br />BARINGIN, S.H, M.H<br />JAKSA MADYA</div>
+						<hr/>
+						<p style="text-align: left;border-bottom: 2px solid #0B6623">WILAYAH</p>
+						<img src="https://landakkab.go.id/public/assets/images/theme/800px-Landak.svg.png" class="img-responsive">
+						<p style="text-align: justify;font-size: 13px">Kabupaten Landak adalah salah satu Daerah Tingkat II di provinsi Kalimantan Barat yang terbentuk dari hasil pemekaran Kabupaten Mempawah tahun 1999. Ibu kota kabupaten ini terletak di Ngabang. Memiliki luas wilayah 9.909,10 km² dan berpenduduk sebesar 282.026 jiwa.<br />
+						Luas	: 9.909 km²<br />
+						Provinsi	: Kalimantan Barat<br />
+						Jumlah penduduk	: 340.931 (2014)<br />
+						Tanggal peresmian	: 4 Oktober 1999</p>
 					</div>
 				</div>
+				
 				<div class="clearfix"> </div>
 			</div>
 			<div class="agileinfo_news_original_grids">
@@ -322,7 +234,7 @@ $result_running = mysqli_query($con,$sql_query_running);
 											<?php
 					while($row = mysqli_fetch_assoc($result2)) {
 						echo '<div class="row"><div class="col-sm-4" style="padding-bottom:10px;"><img src="images/'.$row['foto'].'" alt=" " class="img-responsive" /></div>';
-						echo '<div class="col-sm-8"><h4>'.$row['judul'].'</h4>
+						echo '<div class="col-sm-8"><h4><a href="lihatberita.php?code='.$row['id'].'">'.$row['judul'].'</a></h4>
 							'.$row['ringkasan'].'</div>
 
 						</div>';
