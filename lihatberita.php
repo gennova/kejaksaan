@@ -5,23 +5,37 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <?php
-include 'config.php';
-$sql_query = "select * from home where menu='VISI'";
+include "config.php";
+$kodeberita=$_GET['code'];
+$sql_query = "SELECT * FROM berita where id='".$kodeberita."'";
 $result = mysqli_query($con,$sql_query);
+$sql_query2 = "select * from berita";
+$result2 = mysqli_query($con,$sql_query2);
+$sql_query3 = "select * from pengaduan";
+$result3 = mysqli_query($con,$sql_query3);
 $sql_query_running = "select * from running";
 $result_running = mysqli_query($con,$sql_query_running);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Kejaksaan Negeri Kabupaten Landak</title>
+<title>Kejaksaan Tinggi Kabupaten Landak - Home</title>
+  <style type="text/css">
+    table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+   }
+
+  </style>
+<link rel="icon" type="image/png" href="./images/loggo2_YfP_2.ico"/>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Trade Market Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<meta name="keywords" content="Kejaksaan Tinggi Kabupaten Landak" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- //for-mobile-apps -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -58,7 +72,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	});
 </script>
-<link rel="icon" type="image/png" href="./images/loggo2_YfP_2.ico"/>
 <!-- start-smoth-scrolling -->
 <style type="text/css">
 <!--
@@ -96,8 +109,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="more">
 									
 								</div>
+							</div>
 						</li>
-					</ul>
+				  </ul>
 				</div>
 			</section>
 			<!-- flexSlider -->
@@ -130,18 +144,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
+
+
 <!-- //banner-bottom -->
 <!-- news-original -->
 	<div class="news-original">
 		<div class="container">
 			<div class="agileinfo_news_original_grids">
-				<div class="col-md-9 agileinfo_news_original_grids_left1">
-					<?php
-                    while($row = mysqli_fetch_assoc($result)) {
-                    	echo $row['konten'];
-                    }
-                    ?>
-				</div>
+				<div class="col-md-9 agileinfo_news_original_grids_left">
+<?php
+while($row = mysqli_fetch_assoc($result)) {
+echo "<h3><b>".$row['judul']."</b></h3><br/><img width='100% height='auto' src='images/".$row['foto']."'/>
+<br /><br /><p style='font-size:20px;'>".$row['isi']."</p>";
+}
+?>
+<p align="justify" style="font-size: 9px">
+	<div style="padding-left: 10px;">
+</div>
+
+</p>
+				</div>				
 				<div class="col-md-3 agileinfo_news_original_grids_right">
 					<div class="w3layouts_add_market">
 						<div style="text-align: center"><b>KEPALA<br/>KEJAKSAAN NEGERI LANDAK</b><br/></div>
@@ -149,6 +171,141 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 						<div style="text-align: center"><br />BARINGIN, S.H, M.H<br />JAKSA MADYA</div>
 					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="agileinfo_news_original_grids">
+				<div class="col-md-9 agileinfo_news_original_grids_left">
+					<div class="w3_stocks">
+						<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+							<ul id="myTab2" class="nav nav-tabs nav-tabs1" role="tablist">
+								<li role="presentation" class="active"><a href="#home2" id="home2-tab" role="tab" data-toggle="tab" aria-controls="home2" aria-expanded="true">Berita Lainnya</a></li>
+								<li role="presentation"><a href="#latest2" role="tab" id="latest2-tab" data-toggle="tab" aria-controls="latest2">Galeri Foto </a></li>
+								<li role="presentation"><a href="#experts2" role="tab" id="experts2-tab" data-toggle="tab" aria-controls="experts2">Pengaduan Masyarakat</a></li>
+							</ul>
+							<div id="myTabContent2" class="tab-content">
+								<div role="tabpanel" class="tab-pane fade in active" id="home2" aria-labelledby="home2-tab">
+									<div class="w3l_stocks">
+										<div class="w3l_stocks1">
+											<?php
+					while($row = mysqli_fetch_assoc($result2)) {
+						echo '<div class="row"><div class="col-sm-4" style="padding-bottom:10px;"><img src="images/'.$row['foto'].'" alt=" " class="img-responsive" /></div>';
+						echo '<div class="col-sm-8"><h4>'.$row['judul'].'</h4>
+							'.$row['ringkasan'].'</div>
+
+						</div>';
+					}
+					?>
+										</div>
+										
+									</div>
+								</div>
+								<div role="tabpanel" class="tab-pane fade" id="latest2" aria-labelledby="latest2-tab">
+									<div class="w3l_stocks">
+										<h2>Image Gallery</h2>
+  <p>KOLEKSI ALBUM TERBARU</p>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="/w3images/lights.jpg" target="_blank">
+          <img src="images/0000.png" alt="Lights" style="width:100%">
+          <div class="caption">
+            <p>Sriwijaya AIR SJ182</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="/w3images/nature.jpg" target="_blank">
+          <img src="images/1111.png" alt="Nature" style="width:100%">
+          <div class="caption">
+            <p>Capaian Kinerja Satu Tahun</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="/w3images/fjords.jpg" target="_blank">
+          <img src="images/2222.png" alt="Fjords" style="width:100%">
+          <div class="caption">
+            <p>Agenda</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="/w3images/lights.jpg" target="_blank">
+          <img src="images/3333.png" alt="Lights" style="width:100%">
+          <div class="caption">
+            <p>Selamat Tahun Baru 2021</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="/w3images/nature.jpg" target="_blank">
+          <img src="images/8888.png" alt="Nature" style="width:100%">
+          <div class="caption">
+            <p>Persidangan Online</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="/w3images/fjords.jpg" target="_blank">
+          <img src="images/5555.png" alt="Fjords" style="width:100%">
+          <div class="caption">
+            <p>Hari Bakti Adyhaksa 2020</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+									</div>
+								</div>
+								<div role="tabpanel" class="tab-pane fade" id="experts2" aria-labelledby="experts2-tab">
+									<table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          No
+                        </th>
+                        <th nowrap="true">
+                          No Pengaduan
+                        </th>
+                        <th nowrap="true">
+                          Nama Pelapor
+                        </th>                        
+                        <th nowrap="true">
+                          Subjek Aduan
+                        </th>
+                        <th>
+                          Tahapan
+                        </th>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $no=1;
+                         while($row = mysqli_fetch_assoc($result3)) {
+                          echo '<tr><td>'.$no.'</td><td>'.$row['nopengaduan'].'</td><td>'.$row['namapelapor'].'</td><td>'.$row['subjekaduan'].'</td><td>'.$row['statusaduan'].'</td></tr>';
+                          $no++;
+                        }
+                        ?>
+                      </tbody>
+                    </table>
+							  </div>
+						  </div>
+					  </div>
+				  </div>
+			  </div>
+		  </div>				
+				<div class="col-md-3 agileinfo_news_original_grids_right">
 					<div class="w3_stocks">
 						<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 							<ul id="myTab2" class="nav nav-tabs nav-tabs1" role="tablist">
@@ -164,30 +321,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											
 									
 										
-									</div>
-								</div>
-								<div role="tabpanel" class="tab-pane fade" id="latest2" aria-labelledby="latest2-tab">
-									<div class="w3l_stocks">
-										<div class="w3l_stocks1">
-											<a href="single.html"><h4>Kotak Select Focus Fund - Regular (G)</h4></a>
-											<p>25.975<i style="color:#00AA00;"><span class="caret caret1"></span>0.06<label>(0.25%)</label></i></p>
-										</div>
-										<div class="w3l_stocks1">
-											<a href="single.html"><h4>Birla SL Frontline Equity (G)</h4></a>
-											<p>180.83<i style="color:#00AA00;"><span class="caret caret1"></span>0.14<label>(0.08%)</label></i></p>
-										</div>
-										<div class="w3l_stocks1">
-											<a href="single.html"><h4>SBI Blue Chip Fund (G)</h4></a>
-											<p>31.918<i style="color:#00AA00;"><span class="caret caret1"></span>0.02<label>(0.05%)</label></i></p>
-										</div>
-										<div class="w3l_stocks1">
-											<a href="single.html"><h4>Principal Emerging Bluechip (G)</h4></a>
-											<p>80.11<i style="color:#00AA00;"><span class="caret caret1"></span>0.37<label>(0.46%)</label></i></p>
-										</div>
-										<div class="w3l_stocks1">
-											<a href="single.html"><h4>SBI Magnum Multicap Funds (G)</h4></a>
-											<p>37.592<i style="color:#00AA00;"><span class="caret caret1"></span>0.14<label>(0.36%)</label></i></p>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -211,22 +344,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</div>
 				<div class="clearfix"> </div>
-			</div>
-		</div>
+	  </div>
+</div>
 	</div>
 <!-- //news-original -->
 <!-- follow-us -->
 <!-- //follow-us -->
 <!-- footer -->
 	<div class="footer">
-		<div class="footer">
-		<div class="copyright float-right style1 style1">
+		<div class="copyright float-right style1">
             &copy;
             <script>
               document.write(new Date().getFullYear())
             </script>, DV LandakSoftwareHouse         </div>
 </div>
-	</div>
 	</div>
 <!-- //footer -->
 <!-- script for marque -->
@@ -415,5 +546,38 @@ $(document).ready(function(){
 			});
 	</script>
 <!-- //here ends scrolling icon -->
+<script>
+function sweet(){
+var nama = document.getElementById('namatxt').value;
+var alamat = $("#alamatxt").val();
+var pendidikan = $("#pendidikantxt").val();
+var pekerjaan = $("#pekerjaantxt").val();
+var email = $("#emailtxt").val();
+var telpon = $("#phonetxt").val();
+var masalah = $("#masalahtxt").val();
+console.log(nama);
+if(nama==''|| alamat=='' || pendidikan=='' || pekerjaan=='' || email ==''|| telpon==''||masalah==''){
+swal("LENGKAPI DATA!", "Data ada yang belum lengkap!", "warning");
+}else{
+	$.ajax({
+                            url:'admin/saveumum.php',
+                            type:'post',
+                            data:{nama:nama,alamat:alamat,pendidikan:pendidikan,pekerjaan:pekerjaan,email:email,telpon:telpon,masalah:masalah},
+                            success:function(response){
+                            	var myObj = JSON.parse(response);
+                            	console.log(myObj);
+                            }
+                        });
+swal("DATA TERSIMPAN!", "Laporan Anda Sudah Kami Terima!", "success");
+document.getElementById('namatxt').value ='';
+$("#alamatxt").val('');
+$("#pendidikantxt").val('');
+$("#pekerjaantxt").val('');
+$("#emailtxt").val('');
+$("#phonetxt").val('');
+$("#masalahtxt").val('');
+}
+}
+</script>
 </body>
 </html>

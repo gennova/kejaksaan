@@ -3237,8 +3237,8 @@ div#stacked-graph .label {
 }
 @media (max-width: 991px){
 	.agileits_logo h1 a {
-		background: url(../images/1.jpg) no-repeat 0px 0px;
-		background-size: 20%;
+		background: url(../images/loggo3.png) no-repeat 0px 0px;
+		background-size: 10%;
 		height: 55px;
 		padding-left: 1.3em;
 		padding-top: 0;
@@ -3510,7 +3510,7 @@ div#stacked-graph .label {
 }
 @media (max-width: 667px){
 	.agileits_logo h1 a {
-		font-size: .8em;
+		font-size: .6em;
 		height: 45px;
 	}
 	.agileits_search input[type="text"], #agileinfo_search {
@@ -3658,7 +3658,7 @@ div#stacked-graph .label {
 		padding: 0 0.6em;
 	}
 	.agileits_logo {
-		float: none;
+		float: left;
 		width: 45%;
 		margin: 0 auto;
 	}
@@ -3679,7 +3679,7 @@ div#stacked-graph .label {
 }
 @media (max-width: 480px){
 	.agileits_logo {
-		width: 55%;
+		width: 100%;
 	}
 	.w3l_header_left {
 		float: none;
