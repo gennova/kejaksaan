@@ -12,7 +12,7 @@ $result = mysqli_query($con,$sql_query);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Kejaksaan Negeri Kabupaten Landak</title>
+<title>Kejaksaan Negeri Landak</title>
 <style>
 .tilang {
   border-bottom: 1px solid red;
@@ -161,6 +161,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						Provinsi	: Kalimantan Barat<br />
 						Jumlah penduduk	: 340.931 (2014)<br />
 						Tanggal peresmian	: 4 Oktober 1999</p>
+						<hr/>
+						Ikuti info terbaru kami di
+						<hr/>
+						<div style="display: flex;justify-content: center;">
+						<a href="https://www.facebook.com/kejarilandak.kejarilandak"><i class="fa fa-facebook fa-lg fa-3x" style="color:blue"></i></a>
+						<a href="https://twitter.com/kejarilandak"><i class="fa fa-twitter fa-lg fa-3x" style="color:cyan;margin-left: 20px"></i></a>
+						<a href="https://www.youtube.com/channel/UCcIaMGuHGOWwX4j-b8Dc3Ig/featured"><i class="fa fa-youtube fa-lg fa-3x" style="color:red;margin-left: 20px"></i></a>
+						<a href="https://www.instagram.com/kejarilandak/"><i class="fa fa-instagram fa-lg fa-3x" style="color:magenta;margin-left: 20px"></i></a>
 					</div>
 					<div class="w3_stocks">
 						<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
@@ -212,11 +220,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div style="padding-top: 10px" class="w3layouts_newsletter">
 						<h3><i class="fa fa-link" aria-hidden="true"></i>LINK TERKAIT</h3>
-						<a href="#"><u> Kejaksaan Republik Indonesia </u></a><br/>
-						<a href="#"><u> Mahkamah Agung </u></a><br/>
-						<a href="#"><u> Mahkamah Konstitusi </u></a><br/>
-						<a href="#"><u> Kepolisian Republik Indonesia </u></a><br/>
-						<a href="#"><u> Komisi Pemberantasan Korupsi </u></a><br/>
+						<a href="https://tilang.kejaksaan.go.id/"><u> E-TILANG </u></a><br/>
+						<a href="https://sipede.kejaksaan.go.id/login"><u> SIPEDE </u></a><br/>
 					</div>
 					<div style="padding-top: 10px" class="w3layouts_newsletter">
 						<h3><i class="fa fa-envelope" aria-hidden="true"></i>Google Maps</h3>

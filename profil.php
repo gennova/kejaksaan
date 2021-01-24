@@ -14,7 +14,7 @@ $result_running = mysqli_query($con,$sql_query_running);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Kejaksaan Negeri Kabupaten Landak</title>
+<title>Kejaksaan Negeri Landak</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -154,14 +154,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           <img src="./images/13.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
           <div class="caption">
             <p style="text-align: center">BARINGIN, S.H, M.H <br />JAKSA MADYA</p>
-            <hr/>
-						<p style="text-align: left;border-bottom: 2px solid #0B6623">WILAYAH</p>
-						<img src="https://landakkab.go.id/public/assets/images/theme/800px-Landak.svg.png" class="img-responsive">
-						<p style="text-align: justify;font-size: 13px">Kabupaten Landak adalah salah satu Daerah Tingkat II di provinsi Kalimantan Barat yang terbentuk dari hasil pemekaran Kabupaten Mempawah tahun 1999. Ibu kota kabupaten ini terletak di Ngabang. Memiliki luas wilayah 9.909,10 km² dan berpenduduk sebesar 282.026 jiwa.<br />
-						Luas	: 9.909 km²<br />
-						Provinsi	: Kalimantan Barat<br />
-						Jumlah penduduk	: 340.931 (2014)<br />
-						Tanggal peresmian	: 4 Oktober 1999</p>
+            
           </div>
         </a>
       </div>
@@ -179,20 +172,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </a>
       </div>
     </div>
-   <div class="col-md-4">
-      <div class="thumbnail" style="align-content: center">
-      	<p style="text-align: center;font-weight: bold;margin-bottom: 5px;">KEPALA<br />SEKSI INTELIJEN</p>
-        <a href="/w3images/lights.jpg" target="_blank">
-          <img src="./images/ROH WIHARJO.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
-          <div class="caption">
-            <p style="text-align: center">ROH WIHARJO,S.H,M.H <br />JAKSA MUDA</p>
-          </div>
-        </a>
-      </div>
-    </div>
     <div class="col-md-4">
       <div class="thumbnail" style="align-content: center">
-      	<p style="text-align: center;font-weight: bold;margin-bottom: 5px;">KEPALA<br />SEKSI TINDAK PIDANA UMUM</p>
+      	<p style="text-align: center;font-weight: bold;margin-bottom: 5px;">KEPALA<br />SEKSI INTELIJEN</p>
         <a href="/w3images/lights.jpg" target="_blank">
           <img src="./images/ADI PRAMONO.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
           <div class="caption">
@@ -201,6 +183,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </a>
       </div>
     </div>
+   <div class="col-md-4">
+      <div class="thumbnail" style="align-content: center">
+      	<p style="text-align: center;font-weight: bold;margin-bottom: 5px;">KEPALA<br />SEKSI TINDAK PIDANA UMUM</p>
+        <a href="/w3images/lights.jpg" target="_blank">
+          <img src="./images/ROH WIHARJO.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
+          <div class="caption">
+            <p style="text-align: center">ROH WIHARJO,S.H,M.H <br />JAKSA MUDA</p>
+          </div>
+        </a>
+      </div>
+    </div>    
   </div>
   <div class="row">
     <div class="col-md-4">
@@ -244,6 +237,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<img src="images/13.jpg" alt=" " class="img-responsive" />
 						
 						<div style="text-align: center"><br />BARINGIN, S.H, M.H<br />JAKSA MADYA</div>
+						<hr/>
+						<p style="text-align: left;border-bottom: 2px solid #0B6623">WILAYAH</p>
+						<img src="https://landakkab.go.id/public/assets/images/theme/800px-Landak.svg.png" class="img-responsive">
+						<p style="text-align: justify;font-size: 13px">Kabupaten Landak adalah salah satu Daerah Tingkat II di provinsi Kalimantan Barat yang terbentuk dari hasil pemekaran Kabupaten Mempawah tahun 1999. Ibu kota kabupaten ini terletak di Ngabang. Memiliki luas wilayah 9.909,10 km² dan berpenduduk sebesar 282.026 jiwa.<br />
+						Luas	: 9.909 km²<br />
+						Provinsi	: Kalimantan Barat<br />
+						Jumlah penduduk	: 340.931 (2014)<br />
+						Tanggal peresmian	: 4 Oktober 1999</p>
+						<hr/>
+						Ikuti info terbaru kami di
+						<hr/>
+						<div style="display: flex;justify-content: center;">
+						<a href="https://www.facebook.com/kejarilandak.kejarilandak"><i class="fa fa-facebook fa-lg fa-3x" style="color:blue"></i></a>
+						<a href="https://twitter.com/kejarilandak"><i class="fa fa-twitter fa-lg fa-3x" style="color:cyan;margin-left: 20px"></i></a>
+						<a href="https://www.youtube.com/channel/UCcIaMGuHGOWwX4j-b8Dc3Ig/featured"><i class="fa fa-youtube fa-lg fa-3x" style="color:red;margin-left: 20px"></i></a>
+						<a href="https://www.instagram.com/kejarilandak/"><i class="fa fa-instagram fa-lg fa-3x" style="color:magenta;margin-left: 20px"></i></a>
 					</div>
 					<div class="w3_stocks">
 						<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
@@ -295,11 +304,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div style="padding-top: 10px" class="w3layouts_newsletter">
 						<h3><i class="fa fa-link" aria-hidden="true"></i>LINK TERKAIT</h3>
-						<a href="#"><u> Kejaksaan Republik Indonesia </u></a><br/>
-						<a href="#"><u> Mahkamah Agung </u></a><br/>
-						<a href="#"><u> Mahkamah Konstitusi </u></a><br/>
-						<a href="#"><u> Kepolisian Republik Indonesia </u></a><br/>
-						<a href="#"><u> Komisi Pemberantasan Korupsi </u></a><br/>
+						<a href="https://tilang.kejaksaan.go.id/"><u> E-TILANG </u></a><br/>
+						<a href="https://sipede.kejaksaan.go.id/login"><u> SIPEDE </u></a><br/>
 					</div>
 					<div style="padding-top: 10px" class="w3layouts_newsletter">
 						<h3><i class="fa fa-envelope" aria-hidden="true"></i>Google Maps</h3>

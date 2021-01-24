@@ -14,7 +14,7 @@ $result_running = mysqli_query($con,$sql_query_running);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Kejaksaan Negeri Kabupaten Landak</title>
+<title>Kejaksaan Negeri Landak</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
