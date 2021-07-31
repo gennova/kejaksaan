@@ -26,7 +26,7 @@ $result = mysqli_query($con,$sql_query);
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Halaman Pengaduan User
+    Halaman Whistle Blowing
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
