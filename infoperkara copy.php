@@ -110,9 +110,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 -->
 </style>
 <link rel="icon" type="image/png" href="./images/loggo2_YfP_2.ico"/>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css" />
-
 </head>
 	
 <body>
@@ -182,67 +179,108 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="news-original">
 		<div class="container">
 			<div class="agileinfo_news_original_grids">
-				<div class="col-md-12 agileinfo_news_original_grids_left1">
+				<div class="col-md-9 agileinfo_news_original_grids_left1">
 					<b>DATA PERKARA</b><br /><br />
-					<table class="display" id="example">
-                      <thead class=" text-primary">
-					    <th nowrap="true">
-						No. Perkara 
-                        </th>
-                        <th nowrap="true">
-						Pelapor 
-                        </th>
-                        <th nowrap="true">
-						Tgl. Sidang 
-                        </th>
-                        <th nowrap="true">
-						Jam
-                        </th>
-                        <th nowrap="true">
-						Agenda
-                        </th>
-                        <th nowrap="true">
-						Status tahapan
-                        </th>
-                        <th nowrap="true">
-						Ditunda karena
-                        </th>
-                        <th nowrap="true">
-						Barang bukti
-                        </th>
-                        <th nowrap="true">
-                        Ruangan
-                        </th>
-                      </thead>
-                      <tbody>
-                        
-                        
-                                <?php
- 
-// menampilkan seluruh isi database
-$query ="select * from umum"; 
-$hasil = mysqli_query($con, $query); 
-while($row = mysqli_fetch_assoc($result))
-{
-  ?> 
-  <tr nowrap="true">  
-  <td nowrap="true"><b><?php echo $row["noperkara"] ?></b></td>
-    <td><?php echo $row["namapelapor"] ?></td>
-  <td nowrap="true"><?php echo $row["tglsidang"] ?></td>
-  <td><?php echo $row["jam"]?></td>
-    <td  nowrap="true"><?php echo$row["agenda"]?></td>
-	<td  nowrap="true"><?php echo $row["tahapan"] ?></td>
-    <td><?php $row["ruangan"] ?></td>
-  
-  <td><?php echo $row["alasan"] ?></td>
-  <td><?php echo $row["bukti"] ?></td>
-  
-
-<?php } ?>
-                      </tbody>
-                    </table>
+					
+					<?php
+                    while($row = mysqli_fetch_assoc($result)) {
+                    echo '<div class="row">
+					  <div class="column">
+					    <div class="card" style="margin-bottom:20px">
+					      <h3>'.$row["noperkara"].'</h3>
+					      <p>Pelapor &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: '.$row["namapelapor"].'</p>
+					      <p>Tgl. Sidang &emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;: '.$row["tglsidang"].' </p>
+					      <p>Jam  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;: '.$row["jam"].' </p>
+					      <p>Agenda &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;: '.$row["agenda"].' </p>
+					      <p>Ruangan &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;: '.$row["ruangan"].' </p>
+					       <p>Ditunda karena &emsp;&emsp;&nbsp;&nbsp;: '.$row["alasan"].' </p>
+					      <p>Barang bukti &emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;: '.$row["bukti"].' </p>
+					      <p>Status tahapan &emsp;&emsp;&nbsp;&nbsp;: '.$row["tahapan"].' </p>
+					    </div>
+					  </div>
+					</div>';} ?>
 				</div>
-				
+				<div class="col-md-3 agileinfo_news_original_grids_right">
+					<div class="w3layouts_add_market">
+						<div style="text-align: center"><b>KEPALA<br/>KEJAKSAAN NEGERI LANDAK</b><br/></div>
+						<img src="images/Kajari 4X6.jpg" alt=" " class="img-responsive" />
+						
+                      <div style="text-align: center"><br />SUKAMTO, S.H., M.H<br />JAKSA MADYA</div>
+						<hr/>
+						<p style="text-align: left;border-bottom: 2px solid #0B6623">WILAYAH</p>
+						<img src="https://landakkab.go.id/public/assets/images/theme/800px-Landak.svg.png" class="img-responsive">
+						<p style="text-align: justify;font-size: 13px">Kabupaten Landak adalah salah satu Daerah Tingkat II di provinsi Kalimantan Barat yang terbentuk dari hasil pemekaran Kabupaten Mempawah tahun 1999. Ibu kota kabupaten ini terletak di Ngabang. Memiliki luas wilayah 9.909,10 km² dan berpenduduk sebesar 282.026 jiwa.<br />
+						Luas	: 9.909 km²<br />
+						Provinsi	: Kalimantan Barat<br />
+						Jumlah penduduk	: 340.931 (2014)<br />
+						Tanggal peresmian	: 4 Oktober 1999</p>
+						<hr/>
+						Ikuti info terbaru kami di
+						<hr/>
+						<div style="display: flex;justify-content: center;">
+						<a href="https://www.facebook.com/kejarilandak.kejarilandak"><i class="fa fa-facebook fa-lg fa-3x" style="color:blue"></i></a>
+						<a href="https://twitter.com/kejarilandak"><i class="fa fa-twitter fa-lg fa-3x" style="color:cyan;margin-left: 20px"></i></a>
+						<a href="https://www.youtube.com/channel/UCcIaMGuHGOWwX4j-b8Dc3Ig/featured"><i class="fa fa-youtube fa-lg fa-3x" style="color:red;margin-left: 20px"></i></a>
+						<a href="https://www.instagram.com/kejarilandak/"><i class="fa fa-instagram fa-lg fa-3x" style="color:magenta;margin-left: 20px"></i></a>
+					</div>
+					<div class="w3_stocks">
+						<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+							<ul id="myTab2" class="nav nav-tabs nav-tabs1" role="tablist">
+								<li role="presentation" class="active">
+							</ul>
+							<div id="myTabContent2" class="tab-content">
+								<div role="tabpanel" class="tab-pane fade in active" id="home2" aria-labelledby="home2-tab">
+									
+										<div class="w3l_stocks1">
+											
+										</div>
+										<div class="w3l_stocks1">
+											
+									
+										
+									</div>
+								</div>
+								<div role="tabpanel" class="tab-pane fade" id="latest2" aria-labelledby="latest2-tab">
+									<div class="w3l_stocks">
+										<div class="w3l_stocks1">
+											<a href="single.html"><h4>Kotak Select Focus Fund - Regular (G)</h4></a>
+											<p>25.975<i style="color:#00AA00;"><span class="caret caret1"></span>0.06<label>(0.25%)</label></i></p>
+										</div>
+										<div class="w3l_stocks1">
+											<a href="single.html"><h4>Birla SL Frontline Equity (G)</h4></a>
+											<p>180.83<i style="color:#00AA00;"><span class="caret caret1"></span>0.14<label>(0.08%)</label></i></p>
+										</div>
+										<div class="w3l_stocks1">
+											<a href="single.html"><h4>SBI Blue Chip Fund (G)</h4></a>
+											<p>31.918<i style="color:#00AA00;"><span class="caret caret1"></span>0.02<label>(0.05%)</label></i></p>
+										</div>
+										<div class="w3l_stocks1">
+											<a href="single.html"><h4>Principal Emerging Bluechip (G)</h4></a>
+											<p>80.11<i style="color:#00AA00;"><span class="caret caret1"></span>0.37<label>(0.46%)</label></i></p>
+										</div>
+										<div class="w3l_stocks1">
+											<a href="single.html"><h4>SBI Magnum Multicap Funds (G)</h4></a>
+											<p>37.592<i style="color:#00AA00;"><span class="caret caret1"></span>0.14<label>(0.36%)</label></i></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="agileinfo_chat">
+						<h3><i class="fa fa-comments-o" aria-hidden="true"></i>ALAMAT</h3>
+						Jalan Raya Ngabang Km III, Amboyo Inti, Ngabang, Amboyo Inti, Kec. Ngabang, Kabupaten Landak, Kalimantan Barat 79357
+					</div>
+					<div style="padding-top: 10px" class="w3layouts_newsletter">
+						<h3><i class="fa fa-link" aria-hidden="true"></i>LINK TERKAIT</h3>
+						<a href="https://tilang.kejaksaan.go.id/"><u> E-TILANG </u></a><br/>
+						<a href="https://sipede.kejaksaan.go.id/login"><u> SIPEDE </u></a><br/>
+					</div>
+					<div style="padding-top: 10px" class="w3layouts_newsletter">
+						<h3><i class="fa fa-envelope" aria-hidden="true"></i>Google Maps</h3>
+						<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15958.930208913696!2d109.9417904!3d0.3756858!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa438dfe28f5b7720!2sKejaksaan%20Negeri%20Landak!5e0!3m2!1sid!2sid!4v1609813099438!5m2!1sid!2sid" width="280" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+					</div>
+				</div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
@@ -262,24 +300,6 @@ while($row = mysqli_fetch_assoc($result))
 	</div>
 	</div>
 <!-- //footer -->
-<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
-<script>
-  $(document).ready(function() {
-    $('#example').DataTable( {
-		scrollX: true,
-        dom: 'Bfrtip',
-        buttons: [
-            'copyHtml5',
-            'excelHtml5'
-        ]
-    } );
-} );
-</script>
 <!-- script for marque -->
 	<script>
 	  $('.marquee').marquee({
