@@ -1,66 +1,53 @@
 <?php
+include 'functions.php';
 session_start();
-$_SESSION['uname'] = '';
+    if (!isset($_SESSION['uname'])){
+        header("Location: ../login.html");
+    }
 include "../config.php";
-$judul =$_POST['judul'];
-$ringkasan =$_POST['ringkasan'];
-$isiberita =$_POST['isiberita'];
-
-$target_dir = "../images/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-  if($check !== false) {
-    echo "File is an image - " . $check["mime"] . ".";
-    $uploadOk = 1;
-  } else {
-    echo "File is not an image.";
-    $uploadOk = 0;
-  }
-}
-
-// Check if file already exists
-if (file_exists($target_file)) {
-  echo "Sorry, file already exists.";
-  $uploadOk = 0;
-}
-
-// Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
-  echo "Sorry, your file is too large.";
-  $uploadOk = 0;
-}
-
-// Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-  $uploadOk = 0;
-}
-
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-  echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-} else {
-  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-    if ($ringkasan != "" && $judul != "" && $isiberita != ""){
-    $sql_query = "insert into berita(judul,ringkasan,isi,tanggal,foto) values ('".$judul."','".$ringkasan."','".$isiberita."',NOW(),'".htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]))."');";
-    if (mysqli_query($con, $sql_query)) {
-    echo "Record insertted successfully";
-    header("Location: index.php");
-    } else {
-     echo "Error updating record: " . mysqli_error($con);
-   }
-
-}
-  } else {
-    echo "Sorry, there was an error uploading your file.";
-  }
+// The output message
+$msg = '';
+// Check if user has uploaded new image
+if (isset($_FILES['image'], $_POST['title'], $_POST['description'])) {
+	// The folder where the images will be stored
+	$target_dir = 'images/';
+	// The path of the new uploaded image
+	$image_path = $target_dir . basename($_FILES['image']['name']);
+	// Check to make sure the image is valid
+	if (!empty($_FILES['image']['tmp_name']) && getimagesize($_FILES['image']['tmp_name'])) {
+		if (file_exists($image_path)) {
+			$msg = 'Image already exists, please choose another or rename that image.';
+		} else if ($_FILES['image']['size'] > 500000) {
+			$msg = 'Image file size too large, please choose an image less than 500kb.';
+		} else {
+			// Everything checks out now we can move the uploaded image
+			move_uploaded_file($_FILES['image']['tmp_name'], $image_path);
+			// Connect to MySQL
+			$pdo = pdo_connect_mysql();
+			// Insert image info into the database (title, description, image path, and date added)
+			$stmt = $pdo->prepare('INSERT INTO images VALUES (NULL, ?, ?, ?, CURRENT_TIMESTAMP)');
+	        $stmt->execute([$_POST['title'], $_POST['description'], $image_path]);
+			$msg = 'Image uploaded successfully!';
+		}
+	} else {
+		$msg = 'Please upload an image!';
+	}
 }
 ?>
+<?=template_header('Upload Image')?>
+
+<div class="content upload">
+	<h2>Upload Image</h2>
+	<form action="upload.php" method="post" enctype="multipart/form-data">
+		<label for="image">Choose Image</label>
+		<input type="file" name="image" accept="image/*" id="image">
+		<label for="title">Title</label>
+		<input type="text" name="title" id="title">
+		<label for="description">Description</label>
+		<textarea name="description" id="description"></textarea>
+	    <input type="submit" value="Upload Image" name="submit">
+	</form>
+	<p><?=$msg?></p>
+</div>
+
+<?=template_footer()?>

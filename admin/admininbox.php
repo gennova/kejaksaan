@@ -15,8 +15,7 @@ session_start();
         header("Location: ../login.html");
     }
 include "../config.php";
-$sql_query = "select * from pesan";
-$result = mysqli_query($con,$sql_query);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +50,7 @@ $result = mysqli_query($con,$sql_query);
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+          <li class="nav-item   ">
             <a class="nav-link" href="./index.php">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
@@ -99,7 +98,7 @@ $result = mysqli_query($con,$sql_query);
               <p>Tulis Pesan</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item active">
             <a class="nav-link" href="./admininbox.php">
               <i class="material-icons">announcement</i>
               <p>Daftar Pesan</p>
@@ -108,7 +107,7 @@ $result = mysqli_query($con,$sql_query);
           <li class="nav-item ">
             <a class="nav-link" href="./adminaduan.php">
               <i class="material-icons">table</i>
-              <p>Daftar Aduan</p>
+              <p>Whistle Blowing System</p>
             </a>
           </li>
           <li class="nav-item ">
@@ -180,9 +179,7 @@ $result = mysqli_query($con,$sql_query);
                     <div class="tab-pane active" id="profile">             
                       <table class="table">
                       <thead class=" text-primary">
-                        <th>
-                          No
-                        </th>
+                        
                         <th>
                           Pengirim
                         </th>
@@ -192,16 +189,48 @@ $result = mysqli_query($con,$sql_query);
                         <th>
                           Remark
                         </th>
+                        <th>
+                          Aksi
+                        </th>
                       </thead>
                       <tbody>
-                        <?php
-                        $no=1;
-                         while($row = mysqli_fetch_assoc($result)) {
-                          echo '<tr><td>'.$no.'</td><td>'.$row['pengirim'].'</td><td>'.$row['pesan'].'</td><td>'.$row['remark'].'</td></tr>';
-                          $no++;
-                        }
-                        ?>
-                      </tbody>
+                         <?php
+ 
+// menampilkan seluruh isi database
+$query ="select * from pesan";
+ 
+$hasil = mysqli_query($con, $query);
+ 
+while($data = mysqli_fetch_array($hasil))
+ 
+{
+  ?>
+ 
+  <tr>
+  
+  
+  <td><?php echo $data['pengirim'] ?></td>
+  <td><?php echo $data['pesan'] ?></td>
+  <td><?php echo $data['remark']?></td>
+  <td>
+      <a href='deletepesan.php?id=<?php echo $data['id']; ?> ' onclick="javascript: return confirm('Anda yakin akan hapus data?')"> Delete</a>
+      </td>
+ 
+  </tr>
+ 
+<?php } ?>
+                     
+ 
+  </tr>
+ 
+
+ 
+ 
+</table>
+ 
+</body>
+</html>
+
                     </table>
                     </div>
                     <div class="tab-pane" id="messages">

@@ -205,13 +205,9 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
                         <div class="form-group">
                           <label class="bmd-label-floating">Tujuan</label>
                           <select name="tujuan" class="form-control select2">
-                            <option value="pembinaan">Pembinaan</option>
-                            <option value="intelijen">Intelijen</option>
-                            <option value="pidanaumum">Pidana Umum</option>
-                            <option value="pidanakhusus">Pidanan Khusus</option>
-                            <option value="datun">Perdata Tata Usaha Negara</option>
-                            <option value="barangbukti">Barang Bukti dan Barang Rampasan</option>
-                            
+                            <option value="admin">ADMIN</option>
+                        
+              
                           </select>
                         </div>
                       </div>

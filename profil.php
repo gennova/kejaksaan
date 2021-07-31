@@ -14,7 +14,7 @@ $result_running = mysqli_query($con,$sql_query_running);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Kejaksaan Negeri Kabupaten Landak</title>
+<title>Kejaksaan Negeri Landak</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -68,104 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 	
 <body>
-<!-- header -->
-	<div class="header">
-		<div class="w3ls_header_top">
-			<div class="container">
-				<div class="w3l_header_left">
-					<ul class="w3layouts_header">
-						<li class="w3layouts_header_list">
-							<ul>
-								<li>
-									<i>|</i>
-								</li>
-							</ul>
-						</li>
-						<li class="w3layouts_header_list">
-							<a href="admin">Login Admin</a><i>|</i>
-						</li>
-						
-					</ul>
-				</div>
-				<div class="w3l_header_right">
-					
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-		<div class="w3ls_header_middle">
-			<div class="container">
-				<div class="agileits_logo">
-					<h1><a href="index.php"><span>&nbspKEJAKSAAN NEGERI</span> KABUPATEN LANDAK<i style="padding-top: 0px;display: inline;">&nbsp&nbsp  <p style="font-size: 14px;padding-left: 10px"><b>Sistem Informasi Digitalisasi Akuntable Yuridis Aktual Komunikatif</b></p></i></a></h1>
-				</div>
-
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-<!-- //header -->
-<!-- navigation -->
-	<div class="trade_navigation">
-		<div class="container">
-			<nav class="navbar nav_bottom">
-			 <!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header nav_2">
-				  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				  </button>
-				</div> 
-			   <!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-					<nav class="wthree_nav">
-						<ul class="nav navbar-nav nav_1">
-							<li class="act"><a href="index.php">Beranda</a></li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Profil<span class="caret"></span></a>
-								<div class="dropdown-menu w3ls_vegetables_menu">
-									<ul>	
-										<li><a href="visi.php">Visi dan Misi</a></li>
-										<li><a href="tugas.php">Tugas dan Wewenang</a></li>
-										
-										<li><a href="profil.php">Pimpinan</a></li>
-										<li><a href="sejarah.php">Sejarah</a></li>
-									</ul>             
-								</div>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Organisasi<span class="caret"></span></a>
-								<div class="dropdown-menu w3ls_vegetables_menu">
-									<ul>	
-										<li><a href="pembinaan.php">Pembinaan</a></li>
-										<li><a href="intelijen.php">Intelijen</a></li>
-										<li><a href="tp4d.php">TP4D</a></li>
-										<li><a href="pidum.php">Pidana Umum</a></li>
-										<li><a href="pidsus.php">Pidana Khusus</a></li>
-										<li><a href="datun.php">Datun</a></li>
-										<li><a href="pengawasan.php">Pengawasan</a></li>
-										<li><a href="tatausaha.php">Tata Usaha</a></li>
-									</ul>             
-								</div>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Info Perkara<span class="caret"></span></a>
-								<div class="dropdown-menu w3ls_vegetables_menu">
-									<ul>	
-										
-										<li><a href="infotilang.php">Data Tilang</a></li>
-									</ul>             
-								</div>
-							</li>
-							<li><a href="loginuser.html">Pengaduan Masyarakat</a></li>
-						</ul>
-					</nav>
-				</div>
-			</nav>
-		</div>
-	</div>
-<!-- //navigation -->
+<?php include 'headernavinclude.html';?>
 <!-- banner -->
 	<div class="banner">
 			<section class="slider">
@@ -248,9 +151,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <div class="thumbnail" style="align-content: center">
       	<p style="text-align: center;font-weight: bold;margin-bottom: 5px;">KEPALA<br />KEJAKSAAN NEGERI LANDAK</p>
         <a href="/w3images/lights.jpg" target="_blank">
-          <img src="./images/13.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
+          <img src="./images/Kajari 4X6.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
           <div class="caption">
-            <p style="text-align: center">BARINGIN, S.H, M.H <br />JAKSA MADYA</p>
+            <p style="text-align: center">SUKAMTO, S.H., M.H<br />JAKSA MADYA</p>
+            
           </div>
         </a>
       </div>
@@ -261,44 +165,44 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <div class="thumbnail" style="align-content: center">
       	<p style="text-align: center;font-weight: bold;margin-bottom: 5px;">KEPALA<br />SUB BAGIAN PEMBINAAN</p>
         <a href="/w3images/lights.jpg" target="_blank">
-          <img src="./images/HOTMAN PANJAITAN.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
+          <img src="./images/Hotman.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
           <div class="caption">
             <p style="text-align: center">HOTMAN PANJAITAN, S.H <br />JAKSA MUDA</p>
           </div>
         </a>
       </div>
     </div>
-   <div class="col-md-4">
+    <div class="col-md-4">
       <div class="thumbnail" style="align-content: center">
       	<p style="text-align: center;font-weight: bold;margin-bottom: 5px;">KEPALA<br />SEKSI INTELIJEN</p>
         <a href="/w3images/lights.jpg" target="_blank">
-          <img src="./images/ROH WIHARJO.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
+          <img src="./images/Apriady.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
           <div class="caption">
-            <p style="text-align: center">ROH WIHARJO,S.H,M.H <br />JAKSA MUDA</p>
+            <p style="text-align: center">APRIADY MIRADIAN, S.H <br />JAKSA MUDA</p>
           </div>
         </a>
       </div>
     </div>
-    <div class="col-md-4">
+   <div class="col-md-4">
       <div class="thumbnail" style="align-content: center">
       	<p style="text-align: center;font-weight: bold;margin-bottom: 5px;">KEPALA<br />SEKSI TINDAK PIDANA UMUM</p>
         <a href="/w3images/lights.jpg" target="_blank">
-          <img src="./images/ADI PRAMONO.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
+          <img src="./images/Heri.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
           <div class="caption">
-            <p style="text-align: center">ADI PRAMONO, S.H <br />JAKSA MUDA</p>
+            <p style="text-align: center">HERI SUSANTO, S.H., M.H. <br />JAKSA MUDA</p>
           </div>
         </a>
       </div>
-    </div>
+    </div>    
   </div>
   <div class="row">
     <div class="col-md-4">
       <div class="thumbnail" style="align-content: center">
       	<p style="text-align: center;font-weight: bold;margin-bottom: 5px;">KEPALA<br />TINDAK PIDANA KHUSUS</p>
         <a href="/w3images/lights.jpg" target="_blank">
-          <img src="./images/M.LUTFI.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
+          <img src="./images/Hendra.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
           <div class="caption">
-            <p style="text-align: center">MUHAMAD LUTFI ANDRIAN,S.H <br />JAKSA PRATAMA</p>
+            <p style="text-align: center">HENDRA SYAHPUTRA DALIMUNTHE, S.H., M.H. <br />JAKSA MUDA</p>
           </div>
         </a>
       </div>
@@ -307,7 +211,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <div class="thumbnail" style="align-content: center">
       	<p style="text-align: center;font-weight: bold;margin-bottom: 5px;">KEPALA SEKSI<br />PERDATA DAN TATA USAHA NEGARA</p>
         <a href="/w3images/lights.jpg" target="_blank">
-          <img src="./images/WARA.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
+          <img src="./images/Wara.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
           <div class="caption">
             <p style="text-align: center">WARA ENDRINI,S.T,S.H,M.H <br />JAKSA MUDA</p>
           </div>
@@ -318,9 +222,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <div class="thumbnail" style="align-content: center">
       	<p style="text-align: center;font-weight: bold;margin-bottom: 5px;">KEPALA SEKSI<br />PENGOLAHAN BARANG BUKTI DAN BARANG RAMPASAN</p>
         <a href="/w3images/lights.jpg" target="_blank">
-          <img src="./images/SAMBA SADIKIN.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
+          <img src="./images/Bilal.jpg" class="img-circle" alt="Lights" style="width:230px;height: 230px">
           <div class="caption">
-            <p style="text-align: center">SAMBA SADIKIN, S.H <br />JAKSA PRATAMA</p>
+            <p style="text-align: center">BILAL BIMANTARA, S.H  <br />JAKSA MUDA</p>
           </div>
         </a>
       </div>
@@ -330,9 +234,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 agileinfo_news_original_grids_right">
 					<div class="w3layouts_add_market">
 						<div style="text-align: center"><b>KEPALA<br/>KEJAKSAAN NEGERI LANDAK</b><br/></div>
-						<img src="images/13.jpg" alt=" " class="img-responsive" />
+						<img src="./images/Kajari 4X6.jpg" alt=" " class="img-responsive" />
 						
-						<div style="text-align: center"><br />BARINGIN, S.H, M.H<br />JAKSA MADYA</div>
+						<div style="text-align: center"><br />SUKAMTO, S.H., M.H<br />JAKSA MADYA</div>
+						<hr/>
+						<p style="text-align: left;border-bottom: 2px solid #0B6623">WILAYAH</p>
+						<img src="https://landakkab.go.id/public/assets/images/theme/800px-Landak.svg.png" class="img-responsive">
+						<p style="text-align: justify;font-size: 13px">Kabupaten Landak adalah salah satu Daerah Tingkat II di provinsi Kalimantan Barat yang terbentuk dari hasil pemekaran Kabupaten Mempawah tahun 1999. Ibu kota kabupaten ini terletak di Ngabang. Memiliki luas wilayah 9.909,10 km² dan berpenduduk sebesar 282.026 jiwa.<br />
+						Luas	: 9.909 km²<br />
+						Provinsi	: Kalimantan Barat<br />
+						Jumlah penduduk	: 340.931 (2014)<br />
+						Tanggal peresmian	: 4 Oktober 1999</p>
+						<hr/>
+						Ikuti info terbaru kami di
+						<hr/>
+						<div style="display: flex;justify-content: center;">
+						<a href="https://www.facebook.com/kejarilandak.kejarilandak"><i class="fa fa-facebook fa-lg fa-3x" style="color:blue"></i></a>
+						<a href="https://twitter.com/kejarilandak"><i class="fa fa-twitter fa-lg fa-3x" style="color:cyan;margin-left: 20px"></i></a>
+						<a href="https://www.youtube.com/channel/UCcIaMGuHGOWwX4j-b8Dc3Ig/featured"><i class="fa fa-youtube fa-lg fa-3x" style="color:red;margin-left: 20px"></i></a>
+						<a href="https://www.instagram.com/kejarilandak/"><i class="fa fa-instagram fa-lg fa-3x" style="color:magenta;margin-left: 20px"></i></a>
 					</div>
 					<div class="w3_stocks">
 						<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
@@ -384,11 +304,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div style="padding-top: 10px" class="w3layouts_newsletter">
 						<h3><i class="fa fa-link" aria-hidden="true"></i>LINK TERKAIT</h3>
-						<a href="#"><u> Kejaksaan Republik Indonesia </u></a><br/>
-						<a href="#"><u> Mahkamah Agung </u></a><br/>
-						<a href="#"><u> Mahkamah Konstitusi </u></a><br/>
-						<a href="#"><u> Kepolisian Republik Indonesia </u></a><br/>
-						<a href="#"><u> Komisi Pemberantasan Korupsi </u></a><br/>
+						<a href="https://tilang.kejaksaan.go.id/"><u> E-TILANG </u></a><br/>
+						<a href="https://sipede.kejaksaan.go.id/login"><u> SIPEDE </u></a><br/>
 					</div>
 					<div style="padding-top: 10px" class="w3layouts_newsletter">
 						<h3><i class="fa fa-envelope" aria-hidden="true"></i>Google Maps</h3>

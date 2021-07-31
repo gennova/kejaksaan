@@ -15,8 +15,7 @@ session_start();
         header("Location: ../login.html");
     }
 include "../config.php";
-$sql_query = "select * from pengaduan";
-$result = mysqli_query($con,$sql_query);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +57,7 @@ $result = mysqli_query($con,$sql_query);
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+          <li class="nav-item   ">
             <a class="nav-link" href="./index.php">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
@@ -112,10 +111,10 @@ $result = mysqli_query($con,$sql_query);
               <p>Daftar Pesan</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item active">
             <a class="nav-link" href="./adminaduan.php">
               <i class="material-icons">table</i>
-              <p>Daftar Aduan</p>
+              <p>Whistle Blowing System</p>
             </a>
           </li>
           <li class="nav-item ">
@@ -174,7 +173,7 @@ $result = mysqli_query($con,$sql_query);
                        <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
                           <a class="nav-link active" href="#profile" data-toggle="tab">
-                            <i class="material-icons">inbox</i> DAFTAR ADUAN USER
+                            <i class="material-icons">inbox</i> DATA WHISTLE BLOWING SYSTEM
                             <div class="ripple-container"></div>
                           </a>
                         </li>
@@ -187,9 +186,7 @@ $result = mysqli_query($con,$sql_query);
                     <div class="tab-pane active" id="profile">             
                       <table class="table">
                       <thead class=" text-primary">
-                        <th>
-                          No
-                        </th>
+                        
                         <th nowrap="true">
                           No Pengaduan
                         </th>
@@ -220,18 +217,51 @@ $result = mysqli_query($con,$sql_query);
                         <th>
                           Tujuan
                         </th>
+                        <th>
+                          Aksi
+                        </th>
                       </thead>
                       <tbody>
-                        <?php
-                        $no=1;
-                         while($row = mysqli_fetch_assoc($result)) {
-                          echo '<tr><td>'.$no.'</td><td>'.$row['nopengaduan'].'</td><td>'.$row['namapelapor'].'</td><td>'.$row['alamatpelapor'].'</td><td>'.$row['emailpelapor'].'</td><td>'.$row['telponpelapor'].'</td><td>'.$row['namaterlapor'].'</td><td>'.$row['jabatanterlapor'].'</td><td>'.$row['satuanterlapor'].'</td><td>'.$row['subjekaduan'].'</td><td>'.$row['tujuan'].'</td></tr>';
-                          $no++;
-                        }
-                        ?>
+                        
+                        
+                         <?php
+  $no=1;
+// menampilkan seluruh isi database
+$query ="select * from pengaduan";
+ 
+$hasil = mysqli_query($con, $query);
+ 
+while($data = mysqli_fetch_array($hasil))
+ 
+{
+  ?>
+ 
+  <tr>
+  
+  <td><a href="printaduan.php?kode=<?php echo $data['nopengaduan'] ?>"><b><?php echo $data['nopengaduan'] ?></b></a></td>
+  <td><?php echo $data['namapelapor'] ?></td>
+  <td><?php echo $data['alamatpelapor']?></td>
+    <td><?php echo $data['emailpelapor']?></td>
+    <td><?php echo $data['telponpelapor'] ?></td>
+  
+  <td><?php echo $data['namaterlapor'] ?></td>
+  <td><?php echo $data['jabatanterlapor'] ?></td>
+  <td><?php echo $data['satuanterlapor']?></td>
+    <td><?php echo $data['subjekaduan']?></td>
+    <td><?php echo $data['tujuan']?></td>
+  <td>
+      <a href='deletewbs.php?id=<?php echo $data['id']; ?> ' onclick="javascript: return confirm('Anda yakin akan hapus data?')"> Delete</a>
+      </td>
+ 
+  </tr>
+ 
+<?php } ?>
                       </tbody>
                     </table>
                     </div>
+                    <br/>
+ 
+		<a href="cetak.php" target="_blank">CETAK DATA WHISTLE BLOWING SYSTEM</a>
                     <div class="tab-pane" id="messages">
                       <form>
                     <div class="row">

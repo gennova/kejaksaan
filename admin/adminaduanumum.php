@@ -15,8 +15,7 @@ session_start();
         header("Location: ../login.html");
     }
 include "../config.php";
-$sql_query = "select * from umum";
-$result = mysqli_query($con,$sql_query);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +57,7 @@ $result = mysqli_query($con,$sql_query);
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+          <li class="nav-item   ">
             <a class="nav-link" href="./index.php">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
@@ -115,10 +114,10 @@ $result = mysqli_query($con,$sql_query);
           <li class="nav-item ">
             <a class="nav-link" href="./adminaduan.php">
               <i class="material-icons">table</i>
-              <p>Daftar Aduan</p>
+              <p>Whistle Blowing System</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item active">
             <a class="nav-link" href="./adminaduanumum.php">
               <i class="material-icons">email</i>
               <p>Aduan Umum</p>
@@ -187,9 +186,7 @@ $result = mysqli_query($con,$sql_query);
                     <div class="tab-pane active" id="profile">             
                       <table class="table">
                       <thead class=" text-primary">
-                        <th>
-                          No
-                        </th>
+                        
                         <th nowrap="true">
                           Nama Pelapor
                         </th>
@@ -211,15 +208,43 @@ $result = mysqli_query($con,$sql_query);
                         <th nowrap="true">
                           Masalah
                         </th>
+                        <th nowrap="true">
+                          Aksi
+                        </th>
                       </thead>
                       <tbody>
-                        <?php
-                        $no=1;
-                         while($row = mysqli_fetch_assoc($result)) {
-                          echo '<tr><td>'.$no.'</td><td>'.$row['nama'].'</td><td>'.$row['alamat'].'</td><td>'.$row['pendidikan'].'</td><td>'.$row['pekerjaan'].'</td><td>'.$row['email'].'</td><td>'.$row['telpon'].'</td><td>'.$row['masalah'].'</td></tr>';
-                          $no++;
-                        }
-                        ?>
+                        
+                        
+                                <?php
+ 
+// menampilkan seluruh isi database
+$query ="select * from umum";
+ 
+$hasil = mysqli_query($con, $query);
+ 
+while($data = mysqli_fetch_array($hasil))
+ 
+{
+  ?>
+ 
+  <tr>
+  
+  <td><?php echo $data['nama'] ?></td>
+    <td><?php echo $data['alamat'] ?></td>
+  <td><?php echo $data['pendidikan'] ?></td>
+  <td><?php echo $data['pekerjaan']?></td>
+    <td><?php echo $data['email']?></td>
+    <td><?php echo $data['telpon'] ?></td>
+  
+  <td><?php echo $data['masalah'] ?></td>
+ 
+  <td>
+      <a href='deleteumum.php?id=<?php echo $data['id']; ?> ' onclick="javascript: return confirm('Anda yakin akan hapus data?')"> Delete</a>
+      </td>
+ 
+  </tr>
+ 
+<?php } ?>
                       </tbody>
                     </table>
                     </div>

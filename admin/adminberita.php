@@ -58,7 +58,7 @@ $resultberita = mysqli_query($con,$sql_berita);
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+          <li class="nav-item   ">
             <a class="nav-link" href="./index.php">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
@@ -72,7 +72,7 @@ $resultberita = mysqli_query($con,$sql_berita);
             </a>
           </li>
         -->
-          <li class="nav-item ">
+          <li class="nav-item active">
             <a class="nav-link" href="./adminberita.php">
               <i class="material-icons">library_books</i>
               <p>Berita</p>
@@ -209,12 +209,16 @@ $resultberita = mysqli_query($con,$sql_berita);
                         <th>
                           Tanggal
                         </th>
+                        <th>
+                          Aksi
+                        </th>
                       </thead>
                       <tbody>
                          <?php
                         $no=1;
                          while($row = mysqli_fetch_assoc($resultberita)) {
-                          echo '<tr><td>'.$no.'</td><td>'.$row['judul'].'</td><td>'.$row['ringkasan'].'</td><td>'.substr($row["isi"],0,200).'</td><td>'.$row['tanggal'].'</td></tr>';
+                          echo '<tr><td>'.$no.'</td><td>'.$row['judul'].'</td><td>'.$row['ringkasan'].'</td><td>'.substr($row["isi"],0,200).'</td><td>'.$row['tanggal'].'</td>
+                          <td><a href=adminberitaedit.php?id='.$row['id'].'>UPDATE</a><br /><a href=deleteberita.php?id='.$row['id'].'>DELETE</a></td></tr>';
                           $no++;
                         }
                         ?>

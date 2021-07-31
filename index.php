@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <?php
 include "config.php";
-$sql_query = "select * from berita";
+$sql_query = "SELECT * FROM berita ORDER BY id DESC LIMIT 3";
 $result = mysqli_query($con,$sql_query);
 $sql_query2 = "select * from berita";
 $result2 = mysqli_query($con,$sql_query2);
@@ -14,11 +14,17 @@ $sql_query3 = "select * from pengaduan";
 $result3 = mysqli_query($con,$sql_query3);
 $sql_query_running = "select * from running";
 $result_running = mysqli_query($con,$sql_query_running);
+include 'functions.php';
+// Connect to MySQL 
+$pdo = pdo_connect_mysql();
+// MySQL query that selects all the images
+$stmt = $pdo->query('SELECT * FROM images ORDER BY uploaded_date DESC');
+$images = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Kejaksaan Tinggi Kabupaten Landak - Home</title>
+<title>Kejaksaan Negeri Landak - Home</title>
   <style type="text/css">
     table {
     display: block;
@@ -27,6 +33,7 @@ $result_running = mysqli_query($con,$sql_query_running);
    }
    
   </style>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" type="image/png" href="./images/loggo2_YfP_2.ico"/>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -80,105 +87,7 @@ $result_running = mysqli_query($con,$sql_query_running);
 </head>
 	
 <body>
-<!-- header -->
-	<div class="header">
-		<div class="w3ls_header_top">
-			<div class="container">
-				<div class="w3l_header_left">
-					<ul class="w3layouts_header">
-						<li class="w3layouts_header_list">
-							<ul>
-								<li>
-									<i>|</i>
-								</li>
-							</ul>
-						</li>
-						<li class="w3layouts_header_list">
-							<a href="admin">Login Admin</a><i>|</i>
-						</li>
-						
-					</ul>
-				</div>
-				<div class="w3l_header_right">
-					
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-		<div class="w3ls_header_middle">
-			<div class="container">
-				<div class="agileits_logo">
-					<h1><a href="index.php"><span>&nbspKEJAKSAAN NEGERI</span> KABUPATEN LANDAK<i style="padding-top: 0px;display: inline;">&nbsp&nbsp  <p style="font-size: 14px;padding-left: 10px"><b>Sistem Informasi Digitalisasi Akuntable Yuridis Aktual Komunikatif</b></p></i></a></h1>
-				</div>
-
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-<!-- //header -->
-<!-- navigation -->
-	<div class="trade_navigation">
-		<div class="container">
-			<nav class="navbar nav_bottom">
-			 <!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header nav_2">
-				  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				  </button>
-				</div> 
-			   <!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-					<nav class="wthree_nav">
-						<ul class="nav navbar-nav nav_1">
-							<li class="act"><a href="index.php">Beranda</a></li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Profil<span class="caret"></span></a>
-								<div class="dropdown-menu w3ls_vegetables_menu">
-									<ul>	
-										<li><a href="visi.php">Visi dan Misi</a></li>
-										<li><a href="tugas.php">Tugas dan Wewenang</a></li>
-										
-										<li><a href="profil.php">Pimpinan</a></li>
-										<li><a href="sejarah.php">Sejarah</a></li>
-									</ul>             
-								</div>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Organisasi<span class="caret"></span></a>
-								<div class="dropdown-menu w3ls_vegetables_menu">
-									<ul>	
-										<li><a href="pembinaan.php">Pembinaan</a></li>
-										<li><a href="intelijen.php">Intelijen</a></li>
-										<li><a href="tp4d.php">TP4D</a></li>
-										<li><a href="pidum.php">Pidana Umum</a></li>
-										<li><a href="pidsus.php">Pidana Khusus</a></li>
-										<li><a href="datun.php">Datun</a></li>
-										<li><a href="pengawasan.php">Pengawasan</a></li>
-										<li><a href="tatausaha.php">Tata Usaha</a></li>
-									</ul>             
-								</div>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Info Perkara<span class="caret"></span></a>
-								<div class="dropdown-menu w3ls_vegetables_menu">
-									<ul>	
-										
-										<li><a href="infotilang.php">Data Tilang</a></li>
-									</ul>             
-								</div>
-							</li>
-							<li><a href="loginuser.html">Pengaduan Masyarakat</a></li>
-							
-						</ul>
-					</nav>
-				</div>
-			</nav>
-		</div>
-	</div>
-<!-- //navigation -->
+<?php include 'headernavinclude.html';?>
 <!-- banner -->
 	<div class="banner">
 			<section class="slider">
@@ -285,11 +194,12 @@ $result_running = mysqli_query($con,$sql_query_running);
 					<div style="padding-bottom: 20px"><h3>BERITA TERBARU</h3></div>
 					<?php
 					while($row = mysqli_fetch_assoc($result)) {
-						echo '<div style="padding-bottom: 100px">';
-						echo '<div class="col-sm-4"><img src="images/'.$row['foto'].'" alt=" " class="img-responsive" /></div>	';
-						echo '<div class="col-sm-8"><h4>'.$row['judul'].'</h4>
-							'.$row['ringkasan'].'</div>					
-					</div>';
+						echo '<div class="row">';
+						echo '<div class="col-sm-4" style="display: flex; justify-content: center;
+  height: 120px"><img src="images/'.$row['foto'].'" alt=" " class="img-responsive" /></div>	';
+						echo '<div class="col-sm-8"><h5><b><a href="lihatberita.php?code='.$row['id'].'">'.$row['judul'].'</a></b></h5>
+							<p>'.$row['ringkasan'].'</div>					
+					</div><br/>';
 					}
 					?>
 						
@@ -299,11 +209,22 @@ $result_running = mysqli_query($con,$sql_query_running);
 				<div class="col-md-3 agileinfo_news_original_grids_right">
 					<div class="w3layouts_add_market">
 						<div style="text-align: center"><b>KEPALA<br/>KEJAKSAAN NEGERI LANDAK</b><br/></div>
-						<img src="images/13.jpg" alt=" " class="img-responsive" />
+						<img src="images/Kajari 4X6.jpg" alt=" " class="img-responsive" />
 						
-						<div style="text-align: center"><br />BARINGIN, S.H, M.H<br />JAKSA MADYA</div>
+						<div style="text-align: center"><br />SUKAMTO, S.H., M.H<br />JAKSA MADYA</div>
+						
+						<hr/>
+						Ikuti info terbaru kami di
+						<hr/>
+						<div style="display: flex;justify-content: center;">
+						<a href="https://www.facebook.com/kejarilandak.kejarilandak"><i class="fa fa-facebook fa-lg fa-3x" style="color:blue"></i></a>
+						<a href="https://twitter.com/kejarilandak"><i class="fa fa-twitter fa-lg fa-3x" style="color:cyan;margin-left: 20px"></i></a>
+						<a href="https://www.youtube.com/channel/UCcIaMGuHGOWwX4j-b8Dc3Ig/featured"><i class="fa fa-youtube fa-lg fa-3x" style="color:red;margin-left: 20px"></i></a>
+						<a href="https://www.instagram.com/kejarilandak/"><i class="fa fa-instagram fa-lg fa-3x" style="color:magenta;margin-left: 20px"></i></a>
+					</div>
 					</div>
 				</div>
+				
 				<div class="clearfix"> </div>
 			</div>
 			<div class="agileinfo_news_original_grids">
@@ -322,7 +243,7 @@ $result_running = mysqli_query($con,$sql_query_running);
 											<?php
 					while($row = mysqli_fetch_assoc($result2)) {
 						echo '<div class="row"><div class="col-sm-4" style="padding-bottom:10px;"><img src="images/'.$row['foto'].'" alt=" " class="img-responsive" /></div>';
-						echo '<div class="col-sm-8"><h4>'.$row['judul'].'</h4>
+						echo '<div class="col-sm-8"><h4><a href="lihatberita.php?code='.$row['id'].'">'.$row['judul'].'</a></h4>
 							'.$row['ringkasan'].'</div>
 
 						</div>';
@@ -337,68 +258,19 @@ $result_running = mysqli_query($con,$sql_query_running);
 										<h2>Image Gallery</h2>
   <p>KOLEKSI ALBUM TERBARU</p>
   <div class="row">
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <a href="/w3images/lights.jpg" target="_blank">
-          <img src="images/0000.png" alt="Lights" style="width:100%">
-          <div class="caption">
-            <p>Sriwijaya AIR SJ182</p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <a href="/w3images/nature.jpg" target="_blank">
-          <img src="images/1111.png" alt="Nature" style="width:100%">
-          <div class="caption">
-            <p>Capaian Kinerja Satu Tahun</p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <a href="/w3images/fjords.jpg" target="_blank">
-          <img src="images/2222.png" alt="Fjords" style="width:100%">
-          <div class="caption">
-            <p>Agenda</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-    <div class="row">
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <a href="/w3images/lights.jpg" target="_blank">
-          <img src="images/3333.png" alt="Lights" style="width:100%">
-          <div class="caption">
-            <p>Selamat Tahun Baru 2021</p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <a href="/w3images/nature.jpg" target="_blank">
-          <img src="images/8888.png" alt="Nature" style="width:100%">
-          <div class="caption">
-            <p>Persidangan Online</p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <a href="/w3images/fjords.jpg" target="_blank">
-          <img src="images/5555.png" alt="Fjords" style="width:100%">
-          <div class="caption">
-            <p>Hari Bakti Adyhaksa 2020</p>
-          </div>
-        </a>
-      </div>
-    </div>
+  <div class="content home">
+	<div class="images">
+		<?php foreach ($images as $image): ?>
+		<?php if (file_exists($image['path'])): ?>
+		<a href="<?=$image['path']?>">
+			<img src="<?=$image['path']?>" width="200" height="200">
+			<span><?=$image['description']?></span>
+		</a>
+		<?php endif; ?>
+		<?php endforeach; ?>
+	</div>
+</div>
+<div class="image-popup"></div>
   </div>
 									</div>
 								</div>
@@ -483,16 +355,21 @@ $result_running = mysqli_query($con,$sql_query_running);
 						</div>
 					</div>
 					<div class="agileinfo_chat">
+                      <hr/>
+						<p style="text-align: left;border-bottom: 2px solid #0B6623">WILAYAH</p>
+						<img src="https://landakkab.go.id/public/assets/images/theme/800px-Landak.svg.png" class="img-responsive">
+						<p style="text-align: justify;font-size: 13px">Kabupaten Landak adalah salah satu Daerah Tingkat II di provinsi Kalimantan Barat yang terbentuk dari hasil pemekaran Kabupaten Mempawah tahun 1999. Ibu kota kabupaten ini terletak di Ngabang. Memiliki luas wilayah 9.909,10 km² dan berpenduduk sebesar 282.026 jiwa.<br />
+						Luas	: 9.909 km²<br />
+						Provinsi	: Kalimantan Barat<br />
+						Jumlah penduduk	: 340.931 (2014)<br />
+						Tanggal peresmian	: 4 Oktober 1999</p>
 						<h3><i class="fa fa-comments-o" aria-hidden="true"></i>ALAMAT</h3>
 						Jalan Raya Ngabang Km III, Amboyo Inti, Ngabang, Amboyo Inti, Kec. Ngabang, Kabupaten Landak, Kalimantan Barat 79357
 					</div>
 					<div style="padding-top: 10px" class="w3layouts_newsletter">
 						<h3><i class="fa fa-link" aria-hidden="true"></i>LINK TERKAIT</h3>
-						<a href="#"><u> Kejaksaan Republik Indonesia </u></a><br/>
-						<a href="#"><u> Mahkamah Agung </u></a><br/>
-						<a href="#"><u> Mahkamah Konstitusi </u></a><br/>
-						<a href="#"><u> Kepolisian Republik Indonesia </u></a><br/>
-						<a href="#"><u> Komisi Pemberantasan Korupsi </u></a><br/>
+						<a href="https://tilang.kejaksaan.go.id/"><u> E-TILANG </u></a><br/>
+						<a href="https://sipede.kejaksaan.go.id/login"><u> SIPEDE </u></a><br/>
 					</div>
 					<div style="padding-top: 10px" class="w3layouts_newsletter">
 						<h3><i class="fa fa-envelope" aria-hidden="true"></i>Google Maps</h3>
@@ -515,6 +392,8 @@ $result_running = mysqli_query($con,$sql_query_running);
             </script>, DV LandakSoftwareHouse         </div>
 </div>
 	</div>
+
+
 <!-- //footer -->
 <!-- script for marque -->
 	<script>

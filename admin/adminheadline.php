@@ -55,7 +55,7 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+          <li class="nav-item   ">
             <a class="nav-link" href="./index.php">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
@@ -83,7 +83,7 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
             </a>
           </li>
         -->
-          <li class="nav-item ">
+          <li class="nav-item active">
             <a class="nav-link" href="./adminheadline.php">
               <i class="material-icons">notifications</i>
               <p>News Headline</p>
@@ -112,7 +112,7 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
           <li class="nav-item ">
             <a class="nav-link" href="./adminaduan.php">
               <i class="material-icons">table</i>
-              <p>Daftar Aduan</p>
+              <p>Whistle Blowing System</p>
             </a>
           </li>
           <li class="nav-item ">
