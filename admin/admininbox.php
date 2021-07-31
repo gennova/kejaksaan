@@ -193,6 +193,9 @@ include "../config.php";
                           Remark
                         </th>
                         <th>
+                          Time
+                        </th>
+                        <th>
                           Aksi
                         </th>
                       </thead>
@@ -200,7 +203,7 @@ include "../config.php";
                          <?php
  
 // menampilkan seluruh isi database
-$query ="select * from pesan";
+$query ="select * from pesan order by time desc";
  
 $hasil = mysqli_query($con, $query);
  
@@ -213,10 +216,14 @@ while($data = mysqli_fetch_array($hasil))
   
   
   <td><?php echo $data['pengirim'] ?></td>
-  <td><?php echo $data['pesan'] ?></td>
+  <td><?php echo $data['pesan'] ?></td>  
   <td><?php echo $data['remark']?></td>
+  <td><?php echo $data['time'] ?></td>
   <td>
-      <a href='deletepesan.php?id=<?php echo $data['id']; ?> ' onclick="javascript: return confirm('Anda yakin akan hapus data?')"> Delete</a>
+  <a href="adminpesanreply.php?tujuan=<?php echo $data['pengirim'] ?>">Reply</a>
+  <a href="adminpesanupdate.php?id=<?php echo $data['id'] ?>&&tujuan=<?php echo $data['remark'] ?>&&remark=<?php echo $data['pengirim'] ?>
+  &&pesan=<?php echo $data['pesan'] ?>"  onclick="javascript: return confirm('Anda yakin akan update data?')"><font color='orange'> Edit<font></a>
+      <a href='deletepesan.php?id=<?php echo $data['id']; ?> ' onclick="javascript: return confirm('Anda yakin akan hapus data?')"><font color='red'> Delete<font></a>
       </td>
  
   </tr>

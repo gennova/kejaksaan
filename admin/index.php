@@ -159,7 +159,6 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">Profile</a>
-                  <a class="dropdown-item" href="#">Settings</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" id="logoutid" href="logout.php">Log out</a>
                 </div>
@@ -293,20 +292,20 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
       <div class="modal-body">
          <div class="form-group">
     <label for="username">Username</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" value="<?php echo $_SESSION['uname'] ?>" >          </div>
+    <input readonly type="text" class="form-control" id="usernameid" aria-describedby="emailHelp" placeholder="Username" value="<?php echo $_SESSION['uname'] ?>" >          </div>
         <div class="form-group">
     <label for="username">Nama</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama" value="<?php echo $_SESSION['nama'] ?>" >          </div>
+    <input type="text" class="form-control" id="namaid" aria-describedby="emailHelp" placeholder="Nama" value="<?php echo $_SESSION['nama'] ?>" >          </div>
         <div class="form-group">
     <label for="username">Level</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" value="<?php echo $_SESSION['level'] ?>" >          </div>
+    <input readonly type="text" class="form-control" id="levelid" aria-describedby="emailHelp" placeholder="Username" value="<?php echo $_SESSION['level'] ?>" >          </div>
         <div class="form-group">
     <label for="username">Password</label>
-    <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Password" / >          </div>
+    <input type="password" class="form-control" id="password" aria-describedby="emailHelp" placeholder="Password" / >          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Save changes</button>
+        <button type="button" onClick="sweet()"  class="btn btn-success">Save changes</button>
       </div>
     </div>
   </div>
@@ -373,6 +372,39 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
       md.initDashboardPageCharts();
 
     });
+  </script>
+
+  <script>
+function sweet(){
+var username = $("#usernameid").val();
+var nama = $("#namaid").val();
+var level = $("#levelid").val();
+var password = $("#password").val();
+console.log(username);
+console.log(nama);
+console.log(level);
+console.log(password);
+if(username==''|| nama=='' || level=='' || password==''){
+swal("LENGKAPI DATA!", "Data ada yang belum lengkap!", "warning");
+}else{
+	$.ajax({
+                            url:'updateprofile.php',
+                            type:'post',
+                            data:{usernamenya:username,namanya:nama,levelnya:level,passwordnya:password},
+                            success:function(response){
+                            	var myObj = JSON.parse(response);
+                            	console.log(myObj);
+                            }
+                        });
+swal("DATA TERSIMPAN!", "Perubahan Anda Sudah Kami Terima!", "success");
+$("#usernameid").val('');
+$("#namaid").val('');
+$("#levelid").val('');
+$("#password").val('');
+$('#exampleModal').modal('hide');
+}
+}
+</script>
   </script>
 </body>
 

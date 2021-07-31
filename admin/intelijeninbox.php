@@ -36,6 +36,9 @@ $result = mysqli_query($con,$sql_query);
   <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css" />
+
 </head>
 
 <body class="">
@@ -97,7 +100,6 @@ $result = mysqli_query($con,$sql_query);
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   <a class="dropdown-item" href="#">Profile</a>
-                  <a class="dropdown-item" href="#">Settings</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" id="logoutid" href="logout.php">Log out</a>
                 </div>
@@ -130,7 +132,7 @@ $result = mysqli_query($con,$sql_query);
                 <div class="card-body">
                   <div class="tab-content">
                     <div class="tab-pane active" id="profile">             
-                      <table class="table">
+                      <table class="table" id="example">
                       <thead class=" text-primary">
                         <th>
                           No
@@ -279,6 +281,25 @@ $result = mysqli_query($con,$sql_query);
   <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+    } );
+} );
+</script>
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js

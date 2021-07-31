@@ -10,12 +10,21 @@ Coded by Creative Tim
 =========================================================
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <?php
-session_start();
-    if (!isset($_SESSION['uname'])){
+if (!isset($_SESSION)) { session_start(); }
+    if (!isset($_SESSION['level'])){
         header("Location: ../login.html");
     }
 include "../config.php";
-
+$idlaporan=$_GET['id'];
+$sql_query = "select * from home";
+$result = mysqli_query($con,$sql_query);
+$sql_queryorganisasi = "select * from organisasi";
+$resultorganisasi = mysqli_query($con,$sql_queryorganisasi);
+$sql_queryperkara = "select * from perkara";
+$resultperkara = mysqli_query($con,$sql_queryperkara);
+$sql_umum = "select * from umum where id=$idlaporan";
+$resultumum = mysqli_query($con,$sql_umum);
+$row = mysqli_fetch_assoc($resultumum);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +34,7 @@ include "../config.php";
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Halaman Pengaduan User
+    Admin Dashboard Kejaksaan
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -35,15 +44,6 @@ include "../config.php";
   <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
-  <style type="text/css">
-    table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-}
-  </style>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css" />
 </head>
 
 <body class="">
@@ -54,7 +54,7 @@ include "../config.php";
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="homeuser.php" class="tim-typo">
+      <div class="logo"><a href="barangbukti.php" class="simple-text logo-normal">
           Dashboard Admin
         </a></div>
       <div class="sidebar-wrapper">
@@ -175,7 +175,7 @@ include "../config.php";
                        <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
                           <a class="nav-link active" href="#profile" data-toggle="tab">
-                            <i class="material-icons">inbox</i> DAFTAR ADUAN UMUM
+                            <i class="material-icons">inbox</i> UPDATE ADUAN UMUM
                             <div class="ripple-container"></div>
                           </a>
                         </li>
@@ -184,131 +184,17 @@ include "../config.php";
                   </div>
                 </div>
                 <div class="card-body">
-                  <div class="tab-content">
-                    <div class="tab-pane active" id="profile">             
-                      <table class="table" id="example">
-                      <thead class=" text-primary">
-                        
-                        <th nowrap="true">
-                          Nama Pelapor
-                        </th>
-                        <th nowrap="true">
-                          Alamat Pelapor
-                        </th>
-                        <th nowrap="true">
-                          Pendidikan
-                        </th>
-                        <th nowrap="true">
-                          Pekerjaan
-                        </th>
-                        <th nowrap="true">
-                          Email
-                        </th>
-                        <th nowrap="true">
-                          Telpon
-                        </th>
-                        <th nowrap="true">
-                          Masalah
-                        </th>
-                        <th nowrap="true">
-                          Aksi
-                        </th>
-                      </thead>
-                      <tbody>
-                        
-                        
-                                <?php
- 
-// menampilkan seluruh isi database
-$query ="select * from umum";
- 
-$hasil = mysqli_query($con, $query);
- 
-while($data = mysqli_fetch_array($hasil))
- 
-{
-  ?>
- 
-  <tr>
-  
-  <td><?php echo $data['nama'] ?></td>
-    <td><?php echo $data['alamat'] ?></td>
-  <td><?php echo $data['pendidikan'] ?></td>
-  <td><?php echo $data['pekerjaan']?></td>
-    <td><?php echo $data['email']?></td>
-    <td><?php echo $data['telpon'] ?></td>
-  
-  <td><?php echo $data['masalah'] ?></td>
- 
-  <td>
-  <a href='umumedit.php?id=<?php echo $data['id']; ?> ' onclick="javascript: return confirm('Anda yakin akan update data?')"> Update</a>
-      <a href='deleteumum.php?id=<?php echo $data['id']; ?> ' onclick="javascript: return confirm('Anda yakin akan hapus data?')"><font color="red"> Delete</font></a>
-      </td>
- 
-  </tr>
- 
-<?php } ?>
-                      </tbody>
-                    </table>
-                    </div>
-                    <div class="tab-pane" id="messages">
-                      <form>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Judul</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label>Ringkasan Berita</label>
-                          <div class="form-group">
-                            <textarea class="form-control" rows="3"  maxlength="200"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label>Isi Berita</label>
-                          <div class="form-group">
-                            <textarea class="form-control" rows="50"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-                    <div class="clearfix"></div>
-                  </form>
-                    </div>
-                    <div class="tab-pane" id="settings">
-                      <table class="table">
-                        <tbody>
-                         <?php
-                         while($row = mysqli_fetch_assoc($resultperkara)) {
-                                    echo '
-                          <tr>
-                            <td>
-                              <div class="form-check">
-                               '.$row["menu"].'
-                              </div>
-                            </td>
-                            <td>'.substr($row["konten"],0,500).'</td>
-                            <td class="td-actions text-right">
-                              <a href="updatevisi.php?task=update&menu='.$row["menu"].'" class="btn btn-primary btn-link btn-sm">Update<i class="material-icons">edit</i></a>
-                              <a href="updatevisi.php?task=delete&menu='.$row["menu"].'" class="btn btn-danger btn-link btn-sm">Delete<i class="material-icons">close</i></a>
-                            </td>
-                          </tr>'; 
-                          }
-                         ?>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+                <form>
+              <input type="hidden" class="form-control" id="idtxt" value=<?php echo $idlaporan; ?> />
+							<input type="email" class="form-control" id="namatxt" placeholder="Nama Pelapor" value="<?php echo $row['nama']; ?>" />
+							<input type="email" class="form-control" id="alamatxt" placeholder="Alamat" value="<?php echo $row['alamat']; ?>" />
+							<input type="email" class="form-control" id="pendidikantxt" placeholder="Pendidikan" value="<?php echo $row['pendidikan']; ?>" >
+							<input type="email" class="form-control" id="pekerjaantxt" placeholder="Pekerjaan" value="<?php echo $row['pekerjaan']; ?>" />
+							<input type="email" class="form-control" id="emailtxt" placeholder="Email" value="<?php echo $row['email']; ?>" />
+							<input type="email" class="form-control" id="phonetxt" placeholder="Telpon" value="<?php echo $row['telpon']; ?>" />
+							<input type="email" class="form-control" id="masalahtxt" placeholder="Permasalahan" value="<?php echo $row['masalah']; ?>" />
+							<input type="button" class="btn btn-success"onClick="sweet()" value="Submit" style="width:100%">
+						</form>
                 </div>
               </div>
             </div>
@@ -372,32 +258,53 @@ while($data = mysqli_fetch_array($hasil))
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
   <script>
-      <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
-<script>
-  $(document).ready(function() {
-    $('#example').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
-        ]
-    } );
-} );
-</script>
-<script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       md.initDashboardPageCharts();
 
     });
   </script>
+  <script>
+function sweet(){
+var idnya = document.getElementById('idtxt').value;
+var nama = document.getElementById('namatxt').value;
+var alamat = $("#alamatxt").val();
+var pendidikan = $("#pendidikantxt").val();
+var pekerjaan = $("#pekerjaantxt").val();
+var email = $("#emailtxt").val();
+var telpon = $("#phonetxt").val();
+var masalah = $("#masalahtxt").val();
+console.log(idnya);
+console.log(nama);
+console.log(alamat);
+console.log(pendidikan);
+console.log(pekerjaan);
+console.log(email);
+console.log(telpon);
+console.log(masalah);
+if(idnya=='' || nama==''|| alamat=='' || pendidikan=='' || pekerjaan=='' || email ==''|| telpon==''||masalah==''){
+swal("LENGKAPI DATA!", "Data ada yang belum lengkap!", "warning");
+}else{
+	$.ajax({
+                            url:'updateumum.php',
+                            type:'post',
+                            data:{id:idnya,nama:nama,alamat:alamat,pendidikan:pendidikan,pekerjaan:pekerjaan,email:email,telpon:telpon,masalah:masalah},
+                            success:function(response){
+                            	var myObj = JSON.parse(response);
+                            	console.log(myObj);
+                            }
+                        });
+swal("DATA TERSIMPAN!", "Laporan Anda Sudah Kami Terima!", "success");
+document.getElementById('namatxt').value ='';
+$("#alamatxt").val('');
+$("#pendidikantxt").val('');
+$("#pekerjaantxt").val('');
+$("#emailtxt").val('');
+$("#phonetxt").val('');
+$("#masalahtxt").val('');
+}
+}
+</script>
 </body>
 
 </html>
