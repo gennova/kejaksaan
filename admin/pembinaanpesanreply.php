@@ -100,8 +100,7 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="#">Profile</a>
-                  <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">Profile</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" id="logoutid" href="logout.php">Log out</a>
                 </div>
@@ -247,6 +246,37 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
 
     });
   </script>
+   <script>
+function sweet(){
+var username = $("#usernameid").val();
+var nama = $("#namaid").val();
+var level = $("#levelid").val();
+var password = $("#password").val();
+console.log(username);
+console.log(nama);
+console.log(level);
+console.log(password);
+if(username==''|| nama=='' || level=='' || password==''){
+swal("LENGKAPI DATA!", "Data ada yang belum lengkap!", "warning");
+}else{
+	$.ajax({
+                            url:'updateprofile.php',
+                            type:'post',
+                            data:{usernamenya:username,namanya:nama,levelnya:level,passwordnya:password},
+                            success:function(response){
+                            	var myObj = JSON.parse(response);
+                            	console.log(myObj);
+                            }
+                        });
+swal("DATA TERSIMPAN!", "Perubahan Anda Sudah Kami Terima!", "success");
+$("#usernameid").val('');
+$("#namaid").val('');
+$("#levelid").val('');
+$("#password").val('');
+$('#exampleModal').modal('hide');
+}
+}
+</script>
 </body>
 
 </html>

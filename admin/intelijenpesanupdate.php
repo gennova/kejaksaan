@@ -11,7 +11,7 @@ Coded by Creative Tim
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <?php
 session_start();
-    if (!isset($_SESSION['level'])){
+    if (!isset($_SESSION['uname'])){
         header("Location: ../login.html");
     }
 include "../config.php";
@@ -50,25 +50,25 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="barangbukti.php" class="simple-text logo-normal">
-            PERDATA DAN TATA USAHA NEGARA
+      <div class="logo"><a href="pidanaumum.php" class="simple-text logo-normal">
+      INTELIJEN
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item   ">
-            <a class="nav-link" href="./datun.php">
+          <li class="nav-item active  ">
+            <a class="nav-link" href="./intelijen.php">
               <i class="material-icons">dashboard</i>
               <p>Beranda</p>
             </a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="./datunpesan.php">
+          <li class="nav-item ">
+            <a class="nav-link" href="./intelijenpesan.php">
               <i class="material-icons">content_paste</i>
               <p>Kotak Kirim Pesan</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./datuninbox.php">
+            <a class="nav-link" href="./intelijeninbox.php">
               <i class="material-icons">question_answer</i>
               <p>Inbox & Outbox</p>
             </a>
@@ -100,7 +100,8 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">Profile</a>
+                  <a class="dropdown-item" href="#">Profile</a>
+                  <a class="dropdown-item" href="#">Settings</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" id="logoutid" href="logout.php">Log out</a>
                 </div>
@@ -131,20 +132,16 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
                   </div>
                 </div>
                 <div class="card-body">
-                  <form method="post" action="inputpesandatun.php">
+                  <?php
+                  $tujuan = $_GET['tujuan'];
+                  ?>
+                  <form method="post" action="inputpesanintel.php">
                     <input type="hidden" name='username' value="<?php echo $_SESSION['level'];?>">
                     <div class="row">
                       <div class="col-md-12">
                         <label>TUJUAN</label>
                           <div class="form-group">
-                            <select name="tujuan" class="form-control select2">
-                            <option value="pembinaan">Pembinaan</option>
-                            <option value="intelijen">Intelijen</option>
-                              <option value="pidanaumum">Pidana Umum</option>
-                              <option value="pidanakhusus">Pidanan Khusus</option>
-                              <option value="barangbukti">Barang Bukti</option>
-                              <option value="barangrampasan">Barang Rampasan</option>
-                            </select>
+                            <input readonly="true" type="text" name="tujuan" class="form-control" value="<?php echo $tujuan?>">
                           </div>
                         <div class="form-group">
                           <label>Isi Pesan</label>
@@ -164,37 +161,6 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
           </div>
         </div>
       </div>
-            <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-         <div class="form-group">
-    <label for="username">Username</label>
-    <input readonly type="text" class="form-control" id="usernameid" aria-describedby="emailHelp" placeholder="Username" value="<?php echo $_SESSION['username'] ?>" />          </div>
-        <div class="form-group">
-    <label for="username">Nama</label>
-    <input type="text" class="form-control" id="namaid" aria-describedby="emailHelp" placeholder="Nama" value="<?php echo $_SESSION['nama'] ?>" />          </div>
-        <div class="form-group">
-    <label for="username">Level</label>
-    <input readonly type="text" class="form-control" id="levelid" aria-describedby="emailHelp" placeholder="Username" value="<?php echo $_SESSION['level'] ?>" />          </div>
-        <div class="form-group">
-    <label for="username">Password</label>
-    <input type="password" class="form-control" id="password" aria-describedby="emailHelp" placeholder="Password" / >          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" onClick="sweet()"  class="btn btn-success">Save changes</button>
-      </div>
-    </div>
-  </div>
-   <!-- END Modal -->
       <footer class="footer">
         <div class="container-fluid">
           <nav class="float-left">
@@ -221,7 +187,7 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
               </li>
             </ul>
           </nav>
-          <div class="copyright float-right">
+           <div class="copyright float-right">
             &copy;
             <script>
               document.write(new Date().getFullYear())
@@ -281,37 +247,6 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
 
     });
   </script>
-   <script>
-function sweet(){
-var username = $("#usernameid").val();
-var nama = $("#namaid").val();
-var level = $("#levelid").val();
-var password = $("#password").val();
-console.log(username);
-console.log(nama);
-console.log(level);
-console.log(password);
-if(username==''|| nama=='' || level=='' || password==''){
-swal("LENGKAPI DATA!", "Data ada yang belum lengkap!", "warning");
-}else{
-	$.ajax({
-                            url:'updateprofile.php',
-                            type:'post',
-                            data:{usernamenya:username,namanya:nama,levelnya:level,passwordnya:password},
-                            success:function(response){
-                            	var myObj = JSON.parse(response);
-                            	console.log(myObj);
-                            }
-                        });
-swal("DATA TERSIMPAN!", "Perubahan Anda Sudah Kami Terima!", "success");
-$("#usernameid").val('');
-$("#namaid").val('');
-$("#levelid").val('');
-$("#password").val('');
-$('#exampleModal').modal('hide');
-}
-}
-</script>
 </body>
 
 </html>

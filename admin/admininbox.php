@@ -51,7 +51,7 @@ include "../config.php";
       <div class="logo"><a href="index.php" class="simple-text logo-normal">
           Dashboard Admin
         </a></div>
-      <div class="sidebar-wrapper">
+        <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item   ">
             <a class="nav-link" href="./index.php">
@@ -119,6 +119,12 @@ include "../config.php";
               <p>Aduan Umum</p>
             </a>
           </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="../galery.php">
+              <i class="material-icons">image</i>
+              <p>Galery</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -146,8 +152,7 @@ include "../config.php";
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="#">Profile</a>
-                  <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">Profile</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" id="logoutid" href="logout.php">Log out</a>
                 </div>
@@ -193,6 +198,9 @@ include "../config.php";
                           Remark
                         </th>
                         <th>
+                          Time
+                        </th>
+                        <th>
                           Aksi
                         </th>
                       </thead>
@@ -200,7 +208,7 @@ include "../config.php";
                          <?php
  
 // menampilkan seluruh isi database
-$query ="select * from pesan";
+$query ="select * from pesan order by time desc";
  
 $hasil = mysqli_query($con, $query);
  
@@ -213,10 +221,14 @@ while($data = mysqli_fetch_array($hasil))
   
   
   <td><?php echo $data['pengirim'] ?></td>
-  <td><?php echo $data['pesan'] ?></td>
+  <td><?php echo $data['pesan'] ?></td>  
   <td><?php echo $data['remark']?></td>
+  <td><?php echo $data['time'] ?></td>
   <td>
-      <a href='deletepesan.php?id=<?php echo $data['id']; ?> ' onclick="javascript: return confirm('Anda yakin akan hapus data?')"> Delete</a>
+  <a href="adminpesanreply.php?tujuan=<?php echo $data['pengirim'] ?>">Reply</a>
+  <a href="adminpesanupdate.php?id=<?php echo $data['id'] ?>&&tujuan=<?php echo $data['remark'] ?>&&remark=<?php echo $data['pengirim'] ?>
+  &&pesan=<?php echo $data['pesan'] ?>"  onclick="javascript: return confirm('Anda yakin akan update data?')"><font color='orange'> Edit<font></a>
+      <a href='deletepesan.php?id=<?php echo $data['id']; ?> ' onclick="javascript: return confirm('Anda yakin akan hapus data?')"><font color='red'> Delete<font></a>
       </td>
  
   </tr>
@@ -300,6 +312,37 @@ while($data = mysqli_fetch_array($hasil))
           </div>
         </div>
       </div>
+            <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <div class="form-group">
+    <label for="username">Username</label>
+    <input readonly type="text" class="form-control" id="usernameid" aria-describedby="emailHelp" placeholder="Username" value="<?php echo $_SESSION['uname'] ?>" >          </div>
+        <div class="form-group">
+    <label for="username">Nama</label>
+    <input type="text" class="form-control" id="namaid" aria-describedby="emailHelp" placeholder="Nama" value="<?php echo $_SESSION['nama'] ?>" >          </div>
+        <div class="form-group">
+    <label for="username">Level</label>
+    <input readonly type="text" class="form-control" id="levelid" aria-describedby="emailHelp" placeholder="Username" value="<?php echo $_SESSION['level'] ?>" >          </div>
+        <div class="form-group">
+    <label for="username">Password</label>
+    <input type="password" class="form-control" id="password" aria-describedby="emailHelp" placeholder="Password" / >          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" onClick="sweet()"  class="btn btn-success">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
       <footer class="footer">
         <div class="container-fluid">
           <nav class="float-left"></nav>
@@ -382,6 +425,37 @@ while($data = mysqli_fetch_array($hasil))
 
     });
   </script>
+  <script>
+function sweet(){
+var username = $("#usernameid").val();
+var nama = $("#namaid").val();
+var level = $("#levelid").val();
+var password = $("#password").val();
+console.log(username);
+console.log(nama);
+console.log(level);
+console.log(password);
+if(username==''|| nama=='' || level=='' || password==''){
+swal("LENGKAPI DATA!", "Data ada yang belum lengkap!", "warning");
+}else{
+	$.ajax({
+                            url:'updateprofile.php',
+                            type:'post',
+                            data:{usernamenya:username,namanya:nama,levelnya:level,passwordnya:password},
+                            success:function(response){
+                            	var myObj = JSON.parse(response);
+                            	console.log(myObj);
+                            }
+                        });
+swal("DATA TERSIMPAN!", "Perubahan Anda Sudah Kami Terima!", "success");
+$("#usernameid").val('');
+$("#namaid").val('');
+$("#levelid").val('');
+$("#password").val('');
+$('#exampleModal').modal('hide');
+}
+}
+</script>
 </body>
 
 </html>
