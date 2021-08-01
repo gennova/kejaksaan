@@ -14,11 +14,11 @@ if ($uname != "" && $password != ""){
  
     $count = $row['cntUser'];
     $level = $row['leveluser'];
-
     if($count > 0){
         $_SESSION['coba'] = 'vithaaaaaaaaaaaaaa';        
         $_SESSION['level'] = $level; 
-      $_SESSION['nama'] = $row['nama']; 
+        $_SESSION['nama'] = $row['nama']; 
+        $_SESSION['username']= $row['usernm']; 
         $myObj = new stdClass();
         $myObj->name = $uname;
         $myObj->state = $count;

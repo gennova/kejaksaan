@@ -1,10 +1,5 @@
-<!--
-author: W3layouts
-author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <?php
+session_start();
 include 'config.php';
 $sql_query = "select * from home where menu='DATUN'";
 $result = mysqli_query($con,$sql_query);

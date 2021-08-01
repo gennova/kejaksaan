@@ -270,14 +270,19 @@ while($row = mysqli_fetch_assoc($result))
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
 <script>
   $(document).ready(function() {
-    $('#example').DataTable( {
+    $('#example').DataTable({
 		scrollX: true,
+		lengthMenu: [
+        [ 10, 25, 50, -1 ],
+        [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+    ],
         dom: 'Bfrtip',
         buttons: [
+			'pageLength',
             'copyHtml5',
             'excelHtml5'
-        ]
-    } );
+        ],		
+    });
 } );
 </script>
 <!-- script for marque -->
