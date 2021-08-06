@@ -131,6 +131,12 @@ $resultperkara = mysqli_query($con,$sql_queryperkara);
               <p>Galery</p>
             </a>
           </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./adminprofile.php">
+              <i class="material-icons">home</i>
+              <p>HOME PROFILE</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

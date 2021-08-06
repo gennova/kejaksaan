@@ -15,17 +15,20 @@ session_start();
         header("Location: ../login.html");
     }
 include "../config.php";
-
+$sql_profile = "select * from profile";
+$result = mysqli_query($con,$sql_profile);
+$tampilkan = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <script src="https://cdn.tiny.cloud/1/u91674g45so7sjnqz24fs4l3msy712lodzab4r12xz6w6scv/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Halaman Whistle Blowing
+    Admin Dashboard Kejaksaan
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -35,13 +38,6 @@ include "../config.php";
   <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
-  <style type="text/css">
-    table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-}
-  </style>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css" />
 
@@ -60,7 +56,7 @@ include "../config.php";
         </a></div>
         <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item   ">
+          <li class="nav-item ">
             <a class="nav-link" href="./index.php">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
@@ -74,7 +70,7 @@ include "../config.php";
             </a>
           </li>
         -->
-          <li class="nav-item ">
+          <li class="nav-item">
             <a class="nav-link" href="./adminberita.php">
               <i class="material-icons">library_books</i>
               <p>Berita</p>
@@ -114,7 +110,7 @@ include "../config.php";
               <p>Daftar Pesan</p>
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="./adminaduan.php">
               <i class="material-icons">table</i>
               <p>Whistle Blowing System</p>
@@ -130,6 +126,12 @@ include "../config.php";
             <a class="nav-link" href="../galery.php">
               <i class="material-icons">image</i>
               <p>Galery</p>
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="./adminprofile.php">
+              <i class="material-icons">home</i>
+              <p>HOME PROFILE</p>
             </a>
           </li>
         </ul>
@@ -160,7 +162,6 @@ include "../config.php";
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">Profile</a>
-                  <a class="dropdown-item" href="#">Settings</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" id="logoutid" href="logout.php">Log out</a>
                 </div>
@@ -179,10 +180,11 @@ include "../config.php";
                 <div class="card-header card-header-tabs card-header-primary">
                   <div class="nav-tabs-navigation">
                     <div class="nav-tabs-wrapper">
-                       <ul class="nav nav-tabs" data-tabs="tabs">
+                      <span class="nav-tabs-title"></span>
+                      <ul class="nav nav-tabs" data-tabs="tabs">                        
                         <li class="nav-item">
-                          <a class="nav-link active" href="#profile" data-toggle="tab">
-                            <i class="material-icons">inbox</i> DATA WHISTLE BLOWING SYSTEM
+                          <a class="nav-link" href="#messages" data-toggle="tab">
+                            <i class="material-icons">code</i> Update Home Profile
                             <div class="ripple-container"></div>
                           </a>
                         </li>
@@ -191,101 +193,33 @@ include "../config.php";
                   </div>
                 </div>
                 <div class="card-body">
-                  <div class="tab-content">
-                    <div class="tab-pane active" id="profile">             
-                      <table class="table" id="example">
-                      <thead class=" text-primary">
-                        
-                        <th nowrap="true">
-                          No Pengaduan
-                        </th>
-                        <th nowrap="true">
-                          Nama Pelapor
-                        </th>
-                        <th nowrap="true">
-                          Alamat Pelapor
-                        </th>
-                        <th nowrap="true">
-                          Email Pelapor
-                        </th>
-                        <th nowrap="true">
-                          Telpon Pelapor
-                        </th>
-                        <th nowrap="true">
-                          Nama Terlapor
-                        </th>
-                        <th nowrap="true">
-                          Jabatan Terlapor
-                        </th>
-                        <th nowrap="true">
-                          Satuan Terlapor
-                        </th>
-                        <th nowrap="true">
-                          Subjek Aduan
-                        </th>
-                        <th>
-                          Tujuan
-                        </th>
-                        <th>
-                          Aksi
-                        </th>
-                      </thead>
-                      <tbody>
-                        
-                        
-                         <?php
-  $no=1;
-// menampilkan seluruh isi database
-$query ="select * from pengaduan";
- 
-$hasil = mysqli_query($con, $query);
- 
-while($data = mysqli_fetch_array($hasil))
- 
-{
-  ?>
- 
-  <tr>
-  
-  <td><a href="printaduan.php?kode=<?php echo $data['nopengaduan'] ?>"><b><?php echo $data['nopengaduan'] ?></b></a></td>
-  <td><?php echo $data['namapelapor'] ?></td>
-  <td><?php echo $data['alamatpelapor']?></td>
-    <td><?php echo $data['emailpelapor']?></td>
-    <td><?php echo $data['telponpelapor'] ?></td>  
-  <td><?php echo $data['namaterlapor'] ?></td>
-  <td><?php echo $data['jabatanterlapor'] ?></td>
-  <td><?php echo $data['satuanterlapor']?></td>
-    <td><?php echo $data['subjekaduan']?></td>
-    <td><?php echo $data['tujuan']?></td>
-  <td>
-    
-  <a href='adminupdateblowing.php?id=<?php echo $data['id']; ?> ' onclick="javascript: return confirm('Anda yakin akan update data?')"> Update</a>
-      <a href='deletewbs.php?id=<?php echo $data['id']; ?> ' onclick="javascript: return confirm('Anda yakin akan hapus data?')"> Delete</a>
-      </td>
- 
-  </tr>
- 
-<?php } ?>
-                      </tbody>
-                    </table>
-                    </div>
-                    <br/>
-                    <div class="tab-pane" id="messages">
-                      <form>
+                  <div class="tab-content">                    
+                    <div class="tab-pane active" id="messages">
+                    <form action="uploadprofileedit.php" method="post" enctype="multipart/form-data">
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Judul</label>
-                          <input type="text" class="form-control">
+                          <label class="bmd-label-floating">Nama Pimpinan</label>
+                          <input type="text" name="namapimpinan" class="form-control" value="<?php echo $tampilkan['namapimpinan']; ?>">
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="form-group">
-                          <label>Ringkasan Berita</label>
+                      <div class="form-group">
+                          <label>Wilayah</label>
                           <div class="form-group">
-                            <textarea class="form-control" rows="3"  maxlength="200"></textarea>
+                            <textarea class="form-control" name="wilayah" rows="10"><?php echo $tampilkan['wilayah']; ?></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                      <div class="form-group">
+                          <label>Alamat</label>
+                          <div class="form-group">
+                            <textarea class="form-control" name="alamat" rows="10"><?php echo $tampilkan['alamat']; ?></textarea>
                           </div>
                         </div>
                       </div>
@@ -293,9 +227,15 @@ while($data = mysqli_fetch_array($hasil))
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label>Isi Berita</label>
+                          <label>Link</label>
                           <div class="form-group">
-                            <textarea class="form-control" rows="50"></textarea>
+                            <textarea class="form-control" name="link" rows="10"><?php echo $tampilkan['link']; ?></textarea>
+                          </div>
+                        </div>
+                        <div>
+                          <label>Foto Pimpinan</label>
+                          <div>
+                           <input type="file" name="fileToUpload" id="fileToUpload">
                           </div>
                         </div>
                       </div>
@@ -373,7 +313,7 @@ while($data = mysqli_fetch_array($hasil))
             <script>
               document.write(new Date().getFullYear())
             </script>
-            , DV LandakSoftwareHouse          </div>
+            ,  DV LandakSoftwareHouse          </div>
         </div>
       </footer>
     </div>
@@ -421,7 +361,14 @@ while($data = mysqli_fetch_array($hasil))
   <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
-  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+      toolbar_mode: 'floating',
+   });
+  </script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>

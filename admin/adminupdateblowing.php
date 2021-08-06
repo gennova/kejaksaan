@@ -10,12 +10,15 @@ Coded by Creative Tim
 =========================================================
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <?php
-session_start();
-    if (!isset($_SESSION['uname'])){
+if (!isset($_SESSION)) { session_start(); }
+    if (!isset($_SESSION['level'])){
         header("Location: ../login.html");
     }
 include "../config.php";
-
+$idberita = $_GET['id'];
+$sql_berita = "select * from pengaduan where id=$idberita";
+$result = mysqli_query($con,$sql_berita);
+$tampilkan = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +28,7 @@ include "../config.php";
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Halaman Whistle Blowing
+    Admin Dashboard Kejaksaan
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -35,16 +38,6 @@ include "../config.php";
   <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
-  <style type="text/css">
-    table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-}
-  </style>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css" />
-
 </head>
 
 <body class="">
@@ -55,7 +48,7 @@ include "../config.php";
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="index.php" class="simple-text logo-normal">
+      <div class="logo"><a href="barangbukti.php" class="simple-text logo-normal">
           Dashboard Admin
         </a></div>
         <div class="sidebar-wrapper">
@@ -160,7 +153,6 @@ include "../config.php";
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">Profile</a>
-                  <a class="dropdown-item" href="#">Settings</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" id="logoutid" href="logout.php">Log out</a>
                 </div>
@@ -182,7 +174,7 @@ include "../config.php";
                        <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
                           <a class="nav-link active" href="#profile" data-toggle="tab">
-                            <i class="material-icons">inbox</i> DATA WHISTLE BLOWING SYSTEM
+                            <i class="material-icons">inbox</i> UPDATE DATA WHISTLE BLOWING
                             <div class="ripple-container"></div>
                           </a>
                         </li>
@@ -191,143 +183,23 @@ include "../config.php";
                   </div>
                 </div>
                 <div class="card-body">
-                  <div class="tab-content">
-                    <div class="tab-pane active" id="profile">             
-                      <table class="table" id="example">
-                      <thead class=" text-primary">
-                        
-                        <th nowrap="true">
-                          No Pengaduan
-                        </th>
-                        <th nowrap="true">
-                          Nama Pelapor
-                        </th>
-                        <th nowrap="true">
-                          Alamat Pelapor
-                        </th>
-                        <th nowrap="true">
-                          Email Pelapor
-                        </th>
-                        <th nowrap="true">
-                          Telpon Pelapor
-                        </th>
-                        <th nowrap="true">
-                          Nama Terlapor
-                        </th>
-                        <th nowrap="true">
-                          Jabatan Terlapor
-                        </th>
-                        <th nowrap="true">
-                          Satuan Terlapor
-                        </th>
-                        <th nowrap="true">
-                          Subjek Aduan
-                        </th>
-                        <th>
-                          Tujuan
-                        </th>
-                        <th>
-                          Aksi
-                        </th>
-                      </thead>
-                      <tbody>
-                        
-                        
-                         <?php
-  $no=1;
-// menampilkan seluruh isi database
-$query ="select * from pengaduan";
- 
-$hasil = mysqli_query($con, $query);
- 
-while($data = mysqli_fetch_array($hasil))
- 
-{
-  ?>
- 
-  <tr>
-  
-  <td><a href="printaduan.php?kode=<?php echo $data['nopengaduan'] ?>"><b><?php echo $data['nopengaduan'] ?></b></a></td>
-  <td><?php echo $data['namapelapor'] ?></td>
-  <td><?php echo $data['alamatpelapor']?></td>
-    <td><?php echo $data['emailpelapor']?></td>
-    <td><?php echo $data['telponpelapor'] ?></td>  
-  <td><?php echo $data['namaterlapor'] ?></td>
-  <td><?php echo $data['jabatanterlapor'] ?></td>
-  <td><?php echo $data['satuanterlapor']?></td>
-    <td><?php echo $data['subjekaduan']?></td>
-    <td><?php echo $data['tujuan']?></td>
-  <td>
-    
-  <a href='adminupdateblowing.php?id=<?php echo $data['id']; ?> ' onclick="javascript: return confirm('Anda yakin akan update data?')"> Update</a>
-      <a href='deletewbs.php?id=<?php echo $data['id']; ?> ' onclick="javascript: return confirm('Anda yakin akan hapus data?')"> Delete</a>
-      </td>
- 
-  </tr>
- 
-<?php } ?>
-                      </tbody>
-                    </table>
-                    </div>
-                    <br/>
-                    <div class="tab-pane" id="messages">
-                      <form>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Judul</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label>Ringkasan Berita</label>
-                          <div class="form-group">
-                            <textarea class="form-control" rows="3"  maxlength="200"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label>Isi Berita</label>
-                          <div class="form-group">
-                            <textarea class="form-control" rows="50"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-                    <div class="clearfix"></div>
-                  </form>
-                    </div>
-                    <div class="tab-pane" id="settings">
-                      <table class="table">
-                        <tbody>
-                         <?php
-                         while($row = mysqli_fetch_assoc($resultperkara)) {
-                                    echo '
-                          <tr>
-                            <td>
-                              <div class="form-check">
-                               '.$row["menu"].'
-                              </div>
-                            </td>
-                            <td>'.substr($row["konten"],0,500).'</td>
-                            <td class="td-actions text-right">
-                              <a href="updatevisi.php?task=update&menu='.$row["menu"].'" class="btn btn-primary btn-link btn-sm">Update<i class="material-icons">edit</i></a>
-                              <a href="updatevisi.php?task=delete&menu='.$row["menu"].'" class="btn btn-danger btn-link btn-sm">Delete<i class="material-icons">close</i></a>
-                            </td>
-                          </tr>'; 
-                          }
-                         ?>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+                <div class="agileits_newsletter">
+						<form>
+              <input type="hidden" name="kode" id="kode" value="<?php echo $idberita ?>" />
+							<input type="email" id="namapelapor" placeholder="Nama Pelapor" class="form-control" value="<?php echo $tampilkan['namapelapor']; ?>">
+							<input type="email" id="alamatpelapor" placeholder="Alamat pelapor" class="form-control" value="<?php echo $tampilkan['alamatpelapor']; ?>">
+							<input type="email" id="emailpelapor" placeholder="Email Pelapor" class="form-control" value="<?php echo $tampilkan['emailpelapor']; ?>">
+							<input type="email" id="telponpelapor" placeholder="Telpon Pelapor" class="form-control" value="<?php echo $tampilkan['telponpelapor']; ?>">
+							<input type="email" id="namaterlapor" placeholder="Nama Terlapor" class="form-control" value="<?php echo $tampilkan['namaterlapor']; ?>">
+							<input type="email" id="jabatanterlapor" placeholder="Jabatan Terlapor" class="form-control" value="<?php echo $tampilkan['jabatanterlapor']; ?>">
+							<input type="email" id="satuankerjaterlapor" placeholder="Satuan Terlapor" class="form-control" value="<?php echo $tampilkan['satuanterlapor']; ?>">
+                            <input type="email" id="subjekaduan" placeholder="Subjek Aduan" class="form-control" value="<?php echo $tampilkan['subjekaduan']; ?>">
+                            <select name="tujuan" id="tujuan" class="form-control select2">
+                              <option value="admin">ADMIN</option>
+                            </select>
+							<input type="button" onClick="sweet()" value="Submit" class="btn btn-warning btn-lg btn-block" style="margin-top:10px">
+						</form>
+					</div>
                 </div>
               </div>
             </div>
@@ -421,56 +293,6 @@ while($data = mysqli_fetch_array($hasil))
   <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
-  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
-<script>
-  $(document).ready(function() {
-    $('#example').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
-        ]
-    } );
-} );
-</script>
-<script>
-function sweet(){
-var username = $("#usernameid").val();
-var nama = $("#namaid").val();
-var level = $("#levelid").val();
-var password = $("#password").val();
-console.log(username);
-console.log(nama);
-console.log(level);
-console.log(password);
-if(username==''|| nama=='' || level=='' || password==''){
-swal("LENGKAPI DATA!", "Data ada yang belum lengkap!", "warning");
-}else{
-	$.ajax({
-                            url:'updateprofile.php',
-                            type:'post',
-                            data:{usernamenya:username,namanya:nama,levelnya:level,passwordnya:password},
-                            success:function(response){
-                            	var myObj = JSON.parse(response);
-                            	console.log(myObj);
-                            }
-                        });
-swal("DATA TERSIMPAN!", "Perubahan Anda Sudah Kami Terima!", "success");
-$("#usernameid").val('');
-$("#namaid").val('');
-$("#levelid").val('');
-$("#password").val('');
-$('#exampleModal').modal('hide');
-}
-}
-</script>
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
@@ -478,6 +300,52 @@ $('#exampleModal').modal('hide');
 
     });
   </script>
+<script>
+function sweet(){
+var kode = document.getElementById('kode').value;
+var nama = document.getElementById('namapelapor').value;
+var alamat = $("#alamatpelapor").val();
+var email = $("#emailpelapor").val();
+var telpon = $("#telponpelapor").val();
+var namaterlapor = $("#namaterlapor").val();
+var jabatan = $("#jabatanterlapor").val();
+var satuan = $("#satuankerjaterlapor").val();
+var subjek = $("#subjekaduan").val();
+var tujuan = $("#tujuan").val();  
+console.log(kode);
+console.log(nama);
+  console.log(alamat);
+  console.log(email);
+  console.log(telpon);
+  console.log(namaterlapor);
+  console.log(jabatan);
+  console.log(satuan);
+  console.log(subjek);
+  console.log(tujuan);
+if(nama==''|| alamat=='' || telpon=='' || namaterlapor=='' || subjek ==''|| tujuan==''){
+swal("LENGKAPI DATA!", "Data ada yang belum lengkap!", "warning");
+}else{
+	$.ajax({
+                            url:'updateaduanuser.php',
+                            type:'post',
+                            data:{id:kode,namapelapor:nama,alamatpelapor:alamat,emailpelapor:email,telponpelapor:telpon,namaterlapor:namaterlapor,jabatanterlapor:jabatan,satuanterlapor:satuan,subjekaduan:subjek,tujuan:tujuan},
+                            success:function(response){
+                            	var myObj = JSON.parse(response);
+                            	console.log(myObj);
+                            }
+                        });
+swal("DATA TERSIMPAN!", "Laporan Anda Sudah Kami Terima!", "success");
+document.getElementById('namapelapor').value ='';
+$("#alamatpelapor").val('');
+$("#emailpelapor").val('');
+$("#telponpelapor").val('');
+$("#namaterlapor").val('');
+$("#jabatanterlapor").val('');
+$("#satuankerjaterlapor").val('');
+$("#subjekaduan").val('');
+}
+}
+</script>
 </body>
 
 </html>

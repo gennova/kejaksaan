@@ -10,6 +10,9 @@ $sql_query = "select * from home where menu='PROFIL'";
 $result = mysqli_query($con,$sql_query);
 $sql_query_running = "select * from running";
 $result_running = mysqli_query($con,$sql_query_running);
+$sql_profile = "select * from profile";
+$resultprofile = mysqli_query($con,$sql_profile);
+$profile = mysqli_fetch_array($resultprofile);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,6 +99,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="more">
 									
 								</div>
+						</li>
+						<li>
+							<div class="w3_agile_banner_text banner4">
+								<h3></h3>
+								<div class="more">
+									
+								</div>
+							</div>
 						</li>
 					</ul>
 				</div>
@@ -234,17 +245,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 agileinfo_news_original_grids_right">
 					<div class="w3layouts_add_market">
 						<div style="text-align: center"><b>KEPALA<br/>KEJAKSAAN NEGERI LANDAK</b><br/></div>
-						<img src="./images/Kajari 4X6.jpg" alt=" " class="img-responsive" />
+						<img src="images/<?php echo $profile['fotopimpinan']; ?>" alt=" " class="img-responsive" />
 						
-						<div style="text-align: center"><br />SUKAMTO, S.H., M.H<br />JAKSA MADYA</div>
+						<div style="text-align: center"><br /><?php echo $profile['namapimpinan']; ?></div>
 						<hr/>
 						<p style="text-align: left;border-bottom: 2px solid #0B6623">WILAYAH</p>
 						<img src="https://landakkab.go.id/public/assets/images/theme/800px-Landak.svg.png" class="img-responsive">
-						<p style="text-align: justify;font-size: 13px">Kabupaten Landak adalah salah satu Daerah Tingkat II di provinsi Kalimantan Barat yang terbentuk dari hasil pemekaran Kabupaten Mempawah tahun 1999. Ibu kota kabupaten ini terletak di Ngabang. Memiliki luas wilayah 9.909,10 km² dan berpenduduk sebesar 282.026 jiwa.<br />
-						Luas	: 9.909 km²<br />
-						Provinsi	: Kalimantan Barat<br />
-						Jumlah penduduk	: 340.931 (2014)<br />
-						Tanggal peresmian	: 4 Oktober 1999</p>
+						<?php echo $profile['wilayah']; ?>
 						<hr/>
 						Ikuti info terbaru kami di
 						<hr/>
@@ -300,12 +307,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="agileinfo_chat">
 						<h3><i class="fa fa-comments-o" aria-hidden="true"></i>ALAMAT</h3>
-						Jalan Raya Ngabang Km III, Amboyo Inti, Ngabang, Amboyo Inti, Kec. Ngabang, Kabupaten Landak, Kalimantan Barat 79357
+						<?php echo $profile['alamat']; ?>
 					</div>
 					<div style="padding-top: 10px" class="w3layouts_newsletter">
 						<h3><i class="fa fa-link" aria-hidden="true"></i>LINK TERKAIT</h3>
-						<a href="https://tilang.kejaksaan.go.id/"><u> E-TILANG </u></a><br/>
-						<a href="https://sipede.kejaksaan.go.id/login"><u> SIPEDE </u></a><br/>
+						<?php echo $profile['link']; ?>
 					</div>
 					<div style="padding-top: 10px" class="w3layouts_newsletter">
 						<h3><i class="fa fa-envelope" aria-hidden="true"></i>Google Maps</h3>
