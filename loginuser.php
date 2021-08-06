@@ -161,11 +161,6 @@ $profile = mysqli_fetch_array($resultprofile);
 		<div class="container">
 			<div class="agileinfo_news_original_grids">
 				<div class="col-md-9 agileinfo_news_original_grids_left1">
-					<?php
-                    while($row = mysqli_fetch_assoc($result)) {
-                    	echo $row['konten'];
-                    }
-                    ?>
 				<p class="style3"><a href="index.php" class="style4">[ Kembali ke Beranda ]</a> </p>
 					<p align="center" ><strong>
 					  PENGADUAN MASYARAKAT / WHISTLE BLOWING SYSTEM (WBS)</strong></p>
@@ -382,12 +377,11 @@ $profile = mysqli_fetch_array($resultprofile);
 					</div>
 					<div class="agileinfo_chat">
 						<h3><i class="fa fa-comments-o" aria-hidden="true"></i>ALAMAT</h3>
-						Jalan Raya Ngabang Km III, Amboyo Inti, Ngabang, Amboyo Inti, Kec. Ngabang, Kabupaten Landak, Kalimantan Barat 79357
+						<?php echo $profile['alamat']; ?>
 					</div>
 					<div style="padding-top: 10px" class="w3layouts_newsletter">
 						<h3><i class="fa fa-link" aria-hidden="true"></i>LINK TERKAIT</h3>
-						<a href="https://tilang.kejaksaan.go.id/"><u> E-TILANG </u></a><br/>
-						<a href="https://sipede.kejaksaan.go.id/login"><u> SIPEDE </u></a><br/>
+						<?php echo $profile['link']; ?>
 					</div>
 					<div style="padding-top: 10px" class="w3layouts_newsletter">
 						<h3><i class="fa fa-envelope" aria-hidden="true"></i>Google Maps</h3>
